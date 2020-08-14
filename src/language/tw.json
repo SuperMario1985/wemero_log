@@ -1,0 +1,304 @@
+{
+    "headerPage": {
+        "businessList": "商家入駐",
+        "appDownloadList": "下載APP",
+        "IOS": "IOS",
+        "Android": "安卓",
+        "logIn": "登入",
+        "myInfo": {
+            "profile": "賬戶",
+            "myReview": "我的評論",
+            "invoices": "賬單",
+            "logOut": "退出"
+        },
+        "businessListItem": {
+            "beauty": "美容&SPA商家",
+            "health": "養生&診所商家",
+            "fintess": "健身&瑜伽商家"
+        },
+        "signIn": {
+            "tit": "登錄",
+            "placeholder1": "郵箱",
+            "placeholder2": "密碼",
+            "remember": "記住我",
+            "forgot": "忘記密碼",
+            "register": "註冊"
+        },
+        "signUp": {
+            "tit": "用郵箱註冊",
+            "firstName": "名",
+            "lastName": "姓",
+            "email": "郵箱地址",
+            "mobile": "手機號碼",
+            "password": "密碼",
+            "characters": "至少7位字符",
+            "register": "註冊"
+        }
+    },
+    "footerPage": {
+        "company": {
+            "name": "Wemero",
+            "about": "關於我們",
+            "becomePartner": "成為合作夥伴"
+        },
+        "Business": {
+            "owner": "商家用戶",
+            "product": "產品介紹",
+            "yourBusiness": "商家入駐"
+        },
+        "explore": {
+            "name": "搜索",
+            "service": "尋找服務",
+            "deals": "尋找促銷"
+        },
+        "landerAPP": "Wemero APP",
+        "support": {
+            "name": "支持",
+            "spportCenter": "支持中心",
+            "contact": "聯繫我們"
+        },
+        "followUs": "關注我們",
+        "copyright": {
+            "policy": "隱私政策",
+            "terms": "服務條款",
+            "name": "版權",
+            "companyName": "Wemero",
+            "reserved": "版權歸屬與",
+            "groupName": "Wemero Inc"
+        }
+    },
+    "homePage": {
+        "bannerTitle": {
+            "book": "發現身邊的美好",
+            "service": "服務項目",
+            "discover": "發現您身邊更優質的服務和項目"
+        },
+        "bannerSearch": {
+            "looking": "我想找",
+            "zip": "郵編或地址",
+            "search": "搜索",
+            "category1": "所有類別",
+            "category2": "美容&SPA",
+            "category3": "健身&瑜伽",
+            "category4": "養生&診所",
+            "placeholder1": "服務或類別"
+        },
+        "contentTitle": {
+            "upcoming": "待服務",
+            "recently": "您附近的門店",
+            "nearYou": "最近瀏覽",
+            "popular": "最受欢迎",
+            "discover": "探索其他地區",
+            "ad": "我們的優勢"
+        },
+        "content": {
+            "default": "默認",
+            "rate": "評分",
+            "distance": "距離",
+            "more": "更多",
+            "reviews": "評論",
+            "ad1": "超過50+地區，4億註冊用戶",
+            "ad2": "支持多語言快速預約",
+            "ad3": "快速審核，助力商家"
+        },
+        "messageInfo": {
+            "tip1": "服務名稱為必填項"
+        },
+        "cityList": {
+            "storefront": "店面",
+            "city01": "舊金山",
+            "city02": "洛杉磯",
+            "city03": "里約熱內盧",
+            "city04": "紐約",
+            "city05": "開普敦",
+            "city06": "北京",
+            "city07": "上海",
+            "city08": "悉尼"
+        }
+    },
+    "searchPage": {
+        "searchInfo": {
+            "btn1": "搜索",
+            "btn2": "高級",
+            "showMap": "顯示地圖",
+            "category1": "所有類別",
+            "category2": "美容&SPA",
+            "category3": "健身&瑜伽",
+            "category4": "養生&診所",
+            "resultsFor": "結果 關於",
+            "results": "結果",
+            "reviews": "評論"
+        },
+        "messageInfo": {
+            "tip1": "服務名稱為必填項",
+            "tip2": "未找到結果",
+            "tip3": "更換字符重新搜索"
+        }
+    },
+    "storeDetailPage": {
+        "reviews": "評論",
+        "reviewsFor": "個評論 關於",
+        "results": "結果",
+        "infoBox": {
+            "getDirection": "看路線"
+        },
+        "btn": "現在預約",
+        "detail": {
+            "aboutUs": "關於我們",
+            "services": "服務",
+            "staffs": "員工",
+            "location": "位置",
+            "reviews": "評論",
+            "description": "描述",
+            "showMap": "顯示地圖",
+            "openHours": "營業時間",
+            "monday": "星期一",
+            "tuesday": "星期二",
+            "wednesday": "星期三",
+            "thursday": "星期四",
+            "friday": "星期五",
+            "saturday": "星期六",
+            "sunday": "星期日",
+            "AM": "早上",
+            "PM": "下午",
+            "seconds": "秒",
+            "reply": "回復",
+            "toggleStreetView": "切換街景"
+        },
+        "bookInfo": {
+            "bookingService": "預約服務",
+            "Services": "服務",
+            "itemsSelected": "已選擇內容",
+            "staff": "員工",
+            "date": "日期",
+            "time": "時間",
+            "chooseDate": "選擇日期",
+            "total": "總計",
+            "cancel": "取消",
+            "next": "下一步",
+            "at": "在",
+            "with": "與",
+            "bookingNotes": "預約備註（選填）",
+            "addCommnets": "添加需求備註",
+            "back": "返回",
+            "min": "分鐘",
+            "congratulation": "祝賀您",
+            "YourServices": "您的服務與",
+            "on": "在",
+            "successfully": "已成功預約",
+            "jump": "頁面將自動跳轉到主頁",
+            "skip": "跳過"
+        },
+        "messageInfo": {
+            "tip1": "請完成預約信息",
+            "tip2": "您確認要放棄本次預約嗎?",
+            "tip3": "確認",
+            "tip4": "取消",
+            "tip5": "沒有評論",
+            "tip6": "請邀請您的客戶為您的服務發表評論",
+            "tip7": "沒有內容",
+            "tip8": "請及時更新",
+            "tip9": "沒有服務",
+            "tip10": "請盡快添加服務",
+            "tip11": "沒有員工",
+            "tip12": "請盡快添加員工",
+            "tip13": "沒有問題",
+            "tip14": "請盡快添加問題"
+        },
+        "USD": "美金"
+    },
+    "myBookingPage": {
+        "upcomingBooking": "待服務",
+        "pastBooking": "已完成",
+        "cancelledBooking": "已取消",
+        "myBooking": "我的預約",
+        "reviews": "評論",
+        "USD": "美金",
+        "results": "結果",
+        "explore": "搜索",
+        "noUpcomingBookings": "待服務是空的",
+        "noCancelledBookings": "已取消是空的",
+        "noPastBookings": "已完成是空的",
+        "makeBooking": "從今天起開始您的第一次預約",
+        "detailInfo": {
+            "bookingDetails": "預約詳情",
+            "cancelled": "已取消",
+            "confirmed": "已確認",
+            "past": "已完成",
+            "getDirection": "看路線",
+            "total": "總計",
+            "bookingNotes": "預約備註",
+            "importantInfo": "重要信息",
+            "cancele": "取消",
+            "schedule": "預約",
+            "rescheduleAppointment": "修改預約",
+            "p1": "此預約不可在線修改",
+            "p2": "您可致電",
+            "p3": "直接去",
+            "p4": "描述您的經歷",
+            "ok": "好",
+            "USD": "美金",
+            "min": "分鐘",
+            "reviews": "評論",
+            "stars": "星級",
+            "tip1": "取消",
+            "tip2": "發佈",
+            "tip3": "請輸入取消原因",
+            "bookingService": "預約服務"
+        }
+    },
+    "myProfilePage": {
+        "myProfile": "我的賬戶",
+        "favourite": "我的收藏",
+        "invoice": "賬單",
+        "myReview": "我的評論",
+        "reviews": "評論",
+        "explore": "搜索",
+        "USD": "美金",
+        "all": "全部",
+        "lastWeek": "上週",
+        "lastMonth": "上個月",
+        "lastYear": "去年",
+        "NO": "号码",
+        "venueName": "類別名稱",
+        "quantity": "數量",
+        "total": "總計",
+        "time": "時間",
+        "results": "結果",
+        "readMore": "看更多",
+        "noFavouriteTips1": "您的收藏欄是空的",
+        "noFavouriteTips2": "添加您喜愛的類別和服務將幫您更快地尋找和推薦",
+        "noInvoiceTips1": "賬單是空的",
+        "noInvoiceTips2": "您支付後的所有賬單都會在這裡顯示",
+        "noReviewTips1": "您的待評論訂單是空的",
+        "noReviewTips2": "您的服务完成后才能发布評論"
+    },
+    "accountInfoPage": {
+        "accountInfo": "賬戶信息",
+        "personalInfo": "个人信息",
+        "resetPassword": "重置密碼",
+        "accountName": "賬戶名稱",
+        "nickName": "暱稱",
+        "emailAddress": "郵箱",
+        "phoneNo": "電話號碼",
+        "gender": "性別",
+        "dateOfBirth": "生日",
+        "personalDescription": "個人描述",
+        "VK_URL": "VK賬號",
+        "twitterURL": "Twitter賬號",
+        "facebookURL": "Facebook賬號",
+        "instagtamURL": "Instagram賬號",
+        "newPassword": "新密碼",
+        "confirmPassword": "確認密碼",
+        "ok": "好",
+        "edit": "編輯",
+        "man": "男",
+        "woman": "女",
+        "transgender": "變性人",
+        "upload": "上傳",
+        "explore": "搜索",
+        "tryAgain": "T重試",
+        "tips1": "抱歉，密碼重置失敗",
+        "tips2": "頁面將自動跳轉至主頁 "
+    }
+}

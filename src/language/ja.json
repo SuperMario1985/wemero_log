@@ -1,0 +1,304 @@
+{
+    "headerPage": {
+        "businessList": "店舗をリストアップ",
+        "appDownloadList": "アプリをダウンロードする",
+        "IOS": "IOS",
+        "Android": "Android",
+        "logIn": "ログイン",
+        "myInfo": {
+            "profile": "プロフィール",
+            "myReview": "私のレビュー",
+            "invoices": "インボイス",
+            "logOut": "ログアウト"
+        },
+        "businessListItem": {
+            "beauty": "美容とエステ",
+            "health": "クリニック",
+            "fintess": "ジムとフィットネス"
+        },
+        "signIn": {
+            "tit": "ログイン",
+            "placeholder1": "メール",
+            "placeholder2": "パスワード",
+            "remember": "記憶する",
+            "forgot": "パスワードを忘れた方",
+            "register": "登録"
+        },
+        "signUp": {
+            "tit": "メールアドレスで登録",
+            "firstName": "名前",
+            "lastName": "名字",
+            "email": "メールアドレス",
+            "mobile": "携帯電話",
+            "password": "パスワード",
+            "characters": "最低7文字",
+            "register": "登録"
+        }
+    },
+    "footerPage": {
+        "company": {
+            "name": "Wemero",
+            "about": "会社概要",
+            "becomePartner": "パートナーになる"
+        },
+        "Business": {
+            "owner": "オーナーになる",
+            "product": "商品オーバービュー",
+            "yourBusiness": "店舗をリストアップ"
+        },
+        "explore": {
+            "name": "店舗確認",
+            "service": "メニューを探す",
+            "deals": "ディールを発見"
+        },
+        "landerAPP": "Wemero・アプリ",
+        "support": {
+            "name": "サポート",
+            "spportCenter": "サポートセンター",
+            "contact": "問合せ"
+        },
+        "followUs": "フォロー",
+        "copyright": {
+            "policy": "個人情報に関するポリシー",
+            "terms": "利用規則",
+            "name": "著作権",
+            "companyName": "Wemero",
+            "reserved": "が全著作権を保有",
+            "groupName": "Wemero Inc"
+        }
+    },
+    "homePage": {
+        "bannerTitle": {
+            "book": "BOOK AMAZING",
+            "service": "SERVICES TO GO",
+            "discover": "身近な楽しみを発見しましょう"
+        },
+        "bannerSearch": {
+            "looking": "を探す",
+            "zip": "郵便番号または住所",
+            "search": "サーチ",
+            "category1": "全カテゴリー",
+            "category2": "美容とエステ",
+            "category3": "ジムとフィットネス",
+            "category4": "クリニック",
+            "placeholder1": "メニューまたは場所"
+        },
+        "contentTitle": {
+            "upcoming": "準備中",
+            "recently": "最近見る",
+            "nearYou": "近くの店",
+            "popular": "最人気",
+            "discover": "近くの店",
+            "ad": "我々の特徴"
+        },
+        "content": {
+            "default": "一般",
+            "rate": "ランキング",
+            "distance": "距離",
+            "more": "もっと",
+            "reviews": "レビュー",
+            "ad1": "400万人を超える登録者",
+            "ad2": "多言語対応している",
+            "ad3": "迅速な認証が御社の業務に役立つ"
+        },
+        "messageInfo": {
+            "tip1": "メニューの名前が必要です。"
+        },
+        "cityList": {
+            "storefront": "お店",
+            "city01": "サンフランシスコ",
+            "city02": "ロサンゼルス",
+            "city03": "リオデジャネイロ",
+            "city04": "ニューヨーク",
+            "city05": "ケープタウン",
+            "city06": "北京",
+            "city07": "上海",
+            "city08": "シドニー"
+        }
+    },
+    "searchPage": {
+        "searchInfo": {
+            "btn1": "サーチ",
+            "btn2": "高級",
+            "showMap": "地図を提示",
+            "category1": "全カテゴリー",
+            "category2": "美容",
+            "category3": "ジムとフィットネス",
+            "category4": "クリニック",
+            "resultsFor": "結果",
+            "results": "検索結果",
+            "reviews": "レビュー"
+        },
+        "messageInfo": {
+            "tip1": "メニューの名前が必要です。",
+            "tip2": "検索結果がないので",
+            "tip3": "別のキーワードで検索しましょう"
+        }
+    },
+    "storeDetailPage": {
+        "reviews": "レビュー",
+        "reviewsFor": "をレビューします",
+        "results": "検索結果",
+        "infoBox": {
+            "getDirection": "アクセス"
+        },
+        "btn": "今すぐ予約",
+        "detail": {
+            "aboutUs": "会社概要",
+            "services": "サービス",
+            "staffs": "スタッフ",
+            "location": "場所",
+            "reviews": "レビュー",
+            "description": "説明",
+            "showMap": "地図を提示",
+            "openHours": "営業時間",
+            "monday": "月曜日",
+            "tuesday": "火曜日",
+            "wednesday": "水曜日",
+            "thursday": "目標日",
+            "friday": "金曜日",
+            "saturday": "土曜日",
+            "sunday": "日曜日",
+            "AM": "午前",
+            "PM": "午後",
+            "seconds": "s",
+            "reply": "再放送",
+            "toggleStreetView": "ストリートビュー"
+        },
+        "bookInfo": {
+            "bookingService": "メニューを予約する",
+            "Services": "サービス",
+            "itemsSelected": "選ばれているアイテム",
+            "staff": "スタッフ",
+            "date": "日付",
+            "time": "時間",
+            "chooseDate": "日時を選ぶ",
+            "total": "合計",
+            "cancel": "キャンセル",
+            "next": "次へ",
+            "at": "at",
+            "with": "with",
+            "bookingNotes": "予約備考（オプション）",
+            "addCommnets": "備考内容を追加",
+            "back": "戻り",
+            "min": "分間",
+            "congratulation": "おめでとう！",
+            "YourServices": "あなたのサービス",
+            "on": "on",
+            "successfully": "が完了",
+            "jump": "後にホームページへ",
+            "skip": "スキップ"
+        },
+        "messageInfo": {
+            "tip1": "予約情報を補完してください。",
+            "tip2": "予約を放棄しますか。?",
+            "tip3": "確認",
+            "tip4": "キャンセル",
+            "tip5": "まだレビューが入っていない",
+            "tip6": "お客様にレビューを書かせてください",
+            "tip7": "まだ関連情報はないです",
+            "tip8": "アップデートをしてください",
+            "tip9": "まだメニューはないです",
+            "tip10": "メニューを追加ください",
+            "tip11": "まだスタッフはいないです",
+            "tip12": "スタッフを追加してくだい",
+            "tip13": "まだ質問はないです",
+            "tip14": "質問を追加してください"
+        },
+        "USD": "円"
+    },
+    "myBookingPage": {
+        "upcomingBooking": "将来の予約",
+        "pastBooking": "過去の予約",
+        "cancelledBooking": "キャンセル済み予約",
+        "myBooking": "私の予約",
+        "reviews": "レビュー",
+        "USD": "円",
+        "results": "検索結果",
+        "explore": "店舗確認",
+        "noUpcomingBookings": "次の予約なし！",
+        "noCancelledBookings": "キャンセル予約なし！",
+        "noPastBookings": "過去の予約記録なし！",
+        "makeBooking": "今日は予約しましょうか",
+        "detailInfo": {
+            "bookingDetails": "予約詳細",
+            "cancelled": "キャンセル済み",
+            "confirmed": "確認済み",
+            "past": "前回",
+            "getDirection": "アクセス",
+            "total": "合計",
+            "bookingNotes": "予約備考",
+            "importantInfo": "重要情報",
+            "cancele": "キャンセル",
+            "schedule": "スケジュール",
+            "rescheduleAppointment": "リスケ予約",
+            "p1": "該当予約はオンラインではリスケできない",
+            "p2": "を電話する",
+            "p3": "直接進行させる",
+            "p4": "ご経験を教えてください",
+            "ok": "ok",
+            "USD": "円",
+            "min": "分間",
+            "reviews": "レビュー",
+            "stars": "星",
+            "tip1": "キャンセル",
+            "tip2": "発表",
+            "tip3": "キャンセルの理由を教えてください",
+            "bookingService": "メニューを予約する"
+        }
+    },
+    "myProfilePage": {
+        "myProfile": "プロフィール",
+        "favourite": "お気に入り",
+        "invoice": "請求",
+        "myReview": "私のレビュー",
+        "reviews": "レビュー",
+        "explore": "店舗確認",
+        "USD": "円",
+        "all": "全部",
+        "lastWeek": "一週間続く",
+        "lastMonth": "一ヶ月間続く",
+        "lastYear": "一年間続く",
+        "NO": "番号",
+        "venueName": "店舗場所名",
+        "quantity": "量",
+        "total": "合計",
+        "time": "時間",
+        "results": "検索結果",
+        "readMore": "もっと読む",
+        "noFavouriteTips1": "お気に入りの所はまだ追加していないです。",
+        "noFavouriteTips2": "お気に入りの店やメニューを登録すると検索しやすくなります。",
+        "noInvoiceTips1": "請求はまだありません。",
+        "noInvoiceTips2": "お支払い完了後、請求情報はここに提示されます。",
+        "noReviewTips1": "レビューが必要なオーダーはありません。",
+        "noReviewTips2": "メニューを体験後しかレビューできません。"
+    },
+    "accountInfoPage": {
+        "accountInfo": "アカウント情報",
+        "personalInfo": "登録情報",
+        "resetPassword": "パスワード再設定",
+        "accountName": "アカウント名",
+        "nickName": "ニックネーム",
+        "emailAddress": "メールアドレス",
+        "phoneNo": "電話番号",
+        "gender": "性別",
+        "dateOfBirth": "誕生日",
+        "personalDescription": "自己紹介",
+        "VK_URL": "VK URL",
+        "twitterURL": "Twitter URL",
+        "facebookURL": "Facebook URL",
+        "instagtamURL": "インスタグラム URL",
+        "newPassword": "新しいパスワード",
+        "confirmPassword": "パスワード確認",
+        "ok": "Ok",
+        "edit": "編集",
+        "man": "男",
+        "woman": "女",
+        "transgender": "その他",
+        "upload": "アップロード",
+        "explore": "店舗確認",
+        "tryAgain": "もう一度",
+        "tips1": "パスワードのリセットが失敗",
+        "tips2": "自動的にトップページに戻ります。"
+    }
+}

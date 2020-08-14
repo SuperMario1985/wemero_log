@@ -1,0 +1,304 @@
+{
+    "headerPage": {
+        "businessList": "您的业务内容",
+        "appDownloadList": "下载应用程序",
+        "IOS": "苹果系统",
+        "Android": "安卓系统",
+        "logIn": "登录",
+        "myInfo": {
+            "profile": "头像",
+            "myReview": "我的评论",
+            "invoices": "发票",
+            "logOut": "退出登陆"
+        },
+        "businessListItem": {
+            "beauty": "美业 & Spa",
+            "health": "健康 & 诊所",
+            "fintess": "健身房 & 健身业务"
+        },
+        "signIn": {
+            "tit": "登陆",
+            "placeholder1": "邮箱",
+            "placeholder2": "密码",
+            "remember": "记住我",
+            "forgot": "忘记密码",
+            "register": "注册"
+        },
+        "signUp": {
+            "tit": "用电子邮箱注册",
+            "firstName": "名",
+            "lastName": "姓",
+            "email": "电子邮箱地址",
+            "mobile": "手机号码",
+            "password": "密码",
+            "characters": "至少7个字符",
+            "register": "注册"
+        }
+    },
+    "footerPage": {
+        "company": {
+            "name": "Wemero",
+            "about": "关于我们",
+            "becomePartner": "成为合作伙伴"
+        },
+        "Business": {
+            "owner": "企业主",
+            "product": "产品总览",
+            "yourBusiness": "您的业务内容"
+        },
+        "explore": {
+            "name": "去搜索",
+            "service": "寻找服务",
+            "deals": "查找优惠"
+        },
+        "landerAPP": "Wemero APP",
+        "support": {
+            "name": "帮助",
+            "spportCenter": "帮助中心",
+            "contact": "联系我们"
+        },
+        "followUs": "关注我们",
+        "copyright": {
+            "policy": "隐私政策",
+            "terms": "服务条款",
+            "name": "版权",
+            "companyName": "Wemero",
+            "reserved": "保留所有权利",
+            "groupName": "Wemero Inc"
+        }
+    },
+    "homePage": {
+        "bannerTitle": {
+            "book": "预定",
+            "service": "搜索服务",
+            "discover": "发现让你感觉更好的"
+        },
+        "bannerSearch": {
+            "looking": "我在寻找",
+            "zip": "邮政编码或位置",
+            "search": "搜索",
+            "category1": "所有类别",
+            "category2": "美业 & Spa",
+            "category3": "健身房",
+            "category4": "健康 & 诊所",
+            "placeholder1": "服务或地点"
+        },
+        "contentTitle": {
+            "upcoming": "即将到来",
+            "recently": "最近浏览",
+            "nearYou": "离你最近",
+            "popular": "最受欢迎",
+            "discover": "探索世界",
+            "ad": "我们的优势"
+        },
+        "content": {
+            "default": "默认",
+            "rate": "好评",
+            "distance": "距离",
+            "more": "更多",
+            "reviews": "评论",
+            "ad1": "超过50个地点注册了超过4亿用户",
+            "ad2": "支持多语言即时服务",
+            "ad3": "快速身份验证可帮助您的业务"
+        },
+        "messageInfo": {
+            "tip1": "请您输入搜索的服务名称"
+        },
+        "cityList": {
+            "storefront": "店面",
+            "city01": "旧金山",
+            "city02": "洛杉矶",
+            "city03": "里约热内卢",
+            "city04": "纽约",
+            "city05": "开普敦",
+            "city06": "北京",
+            "city07": "上海",
+            "city08": "悉尼"
+        }
+    },
+    "searchPage": {
+        "searchInfo": {
+            "btn1": "搜索",
+            "btn2": "推荐",
+            "showMap": "显示地图",
+            "category1": "所有类别",
+            "category2": "美业 & Spa",
+            "category3": "健身房",
+            "category4": "健康 & 诊所",
+            "resultsFor": "结果 关于",
+            "results": "结果",
+            "reviews": "评论"
+        },
+        "messageInfo": {
+            "tip1": "请您输入搜索的服务名称",
+            "tip2": "咦！没有搜索结果关于",
+            "tip3": "请更换词语搜索"
+        }
+    },
+    "storeDetailPage": {
+        "reviews": "评论",
+        "reviewsFor": "个评论 关于",
+        "results": "结果",
+        "infoBox": {
+            "getDirection": "获取定位"
+        },
+        "btn": "现在预约",
+        "detail": {
+            "aboutUs": "关于我们",
+            "services": "服务",
+            "staffs": "员工",
+            "location": "位置",
+            "reviews": "评论",
+            "description": "描述",
+            "showMap": "显示地图",
+            "openHours": "营业时间",
+            "monday": "星期一",
+            "tuesday": "星期二",
+            "wednesday": "星期三",
+            "thursday": "星期四",
+            "friday": "星期五",
+            "saturday": "星期六",
+            "sunday": "星期日",
+            "AM": "上午",
+            "PM": "下午",
+            "seconds": "秒",
+            "reply": "回复",
+            "toggleStreetView": "切换街景"
+        },
+        "bookInfo": {
+            "bookingService": "预约服务",
+            "Services": "服务",
+            "itemsSelected": "选择的项目",
+            "staff": "员工",
+            "date": "日期",
+            "time": "时间",
+            "chooseDate": "选择日期",
+            "total": "总额",
+            "cancel": "取消",
+            "next": "下一步",
+            "at": "的",
+            "with": " ",
+            "bookingNotes": "预订须知（可选）",
+            "addCommnets": "为请求添加评论",
+            "back": "上一步",
+            "min": "分钟",
+            "congratulation": "恭喜",
+            "YourServices": "您预约的服务",
+            "on": "时间在",
+            "successfully": "已预约成功",
+            "jump": "页面将自动跳转到主页",
+            "skip": "回到主页"
+        },
+        "messageInfo": {
+            "tip1": "请填写预约信息",
+            "tip2": "您确定要放弃预约吗？",
+            "tip3": "确定",
+            "tip4": "取消",
+            "tip5": "很遗憾！ 没有任何评论。",
+            "tip6": "请让您的客户给出评论。",
+            "tip7": "很遗憾！ 没有任何信息。",
+            "tip8": "请及时更新。",
+            "tip9": "很遗憾！ 没有任何服务。",
+            "tip10": "请尽快添加服务。",
+            "tip11": "很遗憾！ 没有任何员工。",
+            "tip12": "请尽快添加员工。",
+            "tip13": "很遗憾！没有任何问题。",
+            "tip14": "请尽快添加问题。"
+        },
+        "USD": "美元"
+    },
+    "myBookingPage": {
+        "upcomingBooking": "即将到来的预约",
+        "pastBooking": "过去的预约",
+        "cancelledBooking": "取消的预约",
+        "myBooking": "我的预约",
+        "reviews": "评论",
+        "USD": "美元",
+        "results": "条结果",
+        "explore": "去搜索",
+        "noUpcomingBookings": "抱歉! 没有即将到来的预约",
+        "noCancelledBookings": "抱歉! 没有取消的预约",
+        "noPastBookings": "抱歉! 没有过去的预约",
+        "makeBooking": "今天就去预约吧",
+        "detailInfo": {
+            "bookingDetails": "预约详情",
+            "cancelled": "已取消",
+            "confirmed": "已确认",
+            "past": "已完成",
+            "getDirection": "获取定位",
+            "total": "总计",
+            "bookingNotes": "预约留言",
+            "importantInfo": "重要信息",
+            "cancele": "取消",
+            "schedule": "修改时间",
+            "rescheduleAppointment": "重新安排预约",
+            "p1": "此预约无法在线重新安排",
+            "p2": "您可以拨打电话给",
+            "p3": "直接进行修改",
+            "p4": "请描述您的体验",
+            "ok": "知道了",
+            "USD": "美元",
+            "min": "分钟",
+            "reviews": "评价",
+            "stars": "星",
+            "tip1": "取消",
+            "tip2": "提交",
+            "tip3": "请填写原因以便取消",
+            "bookingService": "预约服务"
+        }
+    },
+    "myProfilePage": {
+        "myProfile": "我的信息",
+        "favourite": "我的收藏",
+        "invoice": "发票",
+        "myReview": "我的评论",
+        "reviews": "评论",
+        "explore": "去搜索",
+        "USD": "美元",
+        "all": "全部",
+        "lastWeek": "最近一周",
+        "lastMonth": "最近一月",
+        "lastYear": "最近一年",
+        "NO": "N.O.",
+        "venueName": "场地名称",
+        "quantity": "数量",
+        "total": "总计",
+        "time": "时间",
+        "results": "结果",
+        "readMore": "阅读更多",
+        "noFavouriteTips1": "抱歉！您还没有添加收藏的店铺。",
+        "noFavouriteTips2": "添加您喜爱的地点或服务将帮助您更快的享受服务。",
+        "noInvoiceTips1": "抱歉！您还没有可查看的发票。",
+        "noInvoiceTips2": "付款后所有发票都会显示在这里。",
+        "noReviewTips1": "您没有可以评论的订单。",
+        "noReviewTips2": "完成服务后才能写评论。"
+    },
+    "accountInfoPage": {
+        "accountInfo": "帐户信息",
+        "personalInfo": "个人信息",
+        "resetPassword": "重设密码",
+        "accountName": "用户名",
+        "nickName": "用户名",
+        "emailAddress": "电子邮箱",
+        "phoneNo": "电话号码",
+        "gender": "性别",
+        "dateOfBirth": "出生日期",
+        "personalDescription": "自我描述",
+        "VK_URL": "VK URL",
+        "twitterURL": "Twitter 链接",
+        "facebookURL": "Facebook 链接",
+        "instagtamURL": "Instagtam 链接",
+        "newPassword": "新密码",
+        "confirmPassword": "确认密码",
+        "ok": "知道了",
+        "edit": "编辑",
+        "man": "男性",
+        "woman": "女性",
+        "transgender": "变性人",
+        "upload": "去上传",
+        "explore": "去搜索",
+        "tryAgain": "再试一次",
+        "tips1": "对不起，密码重置失败。",
+        "tips2": "页面将自动跳转到首页 "
+    }
+}

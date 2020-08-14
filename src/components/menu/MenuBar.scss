@@ -1,0 +1,127 @@
+.menu-bar {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 102;
+    .menu-box {
+        width: 256px;
+        background: rgb(84, 92, 100);
+        border-radius: 0px 24px 24px 0px;
+    }
+    .logo-box {
+        padding: 42px 0 45px 32px;
+        img {
+            cursor: pointer;
+            width: 119px;
+            height: 47px;
+        }
+    }
+    .nav-list {
+        li {
+            position: relative;
+            font-size: 14px;
+            color: rgba(247, 248, 252, 1);
+            line-height: 40px;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+            &.active {
+                background: rgba(57, 76, 214, 1);
+                border-left: 4px solid rgba(255, 255, 254, 1);
+            }
+            &:hover {
+                background: rgba(57, 76, 214, 1);
+                border-left: 4px solid rgba(255, 255, 254, 1);
+            }
+            i {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin: 0 12px 0 24px;
+                vertical-align: middle;
+            }
+            .icon-right-arror {
+                position: absolute;
+                right: 12px;
+                top: 14px;
+                width: 12px;
+                height: 12px;
+                margin: 0;
+                vertical-align: middle;
+                background: url("../../assets/images/menu_list/icon-right-arror.png") center center no-repeat;
+                background-size: 12px 12px;
+            }
+            .icon-home {
+                background: url("../../assets/images/menu_list/icon-home.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+            .icon-calendar {
+                background: url("../../assets/images/menu_list/icon-calendar.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+            .icon-customer {
+                background: url("../../assets/images/menu_list/icon-customer.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+            .icon-service {
+                background: url("../../assets/images/menu_list/icon-service.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+            .icon-staff {
+                background: url("../../assets/images/menu_list/icon-staff.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+            .icon-product {
+                background: url("../../assets/images/menu_list/icon-product.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+            .icon-finance {
+                background: url("../../assets/images/menu_list/icon-finance.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+            .icon-stores {
+                background: url("../../assets/images/menu_list/icon-stores.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+            .icon-markedting {
+                background: url("../../assets/images/menu_list/iocn-markedting.png") center center no-repeat;
+                background-size: 16px 16px;
+            }
+        }
+    }
+    .rights {
+        position: absolute;
+        bottom: 21px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 200;
+        color: rgba(247, 248, 252, 1);
+        line-height: 16px;
+    }
+    &.pad-version {
+        .menu-box {
+            width: 48px;
+        }
+        .nav-list {
+            padding-top: 146px;
+            li {
+                -webkit-tap-highlight-color: transparent;
+                i {
+                    margin: 0 0 0 14px;
+                }
+                &:hover {
+                    background: none;
+                    border-left: 4px solid transparent;
+                }
+                &.active {
+                    background: rgba(57, 76, 214, 1);
+                    border-left: 4px solid rgba(255, 255, 254, 1);
+                }
+            }
+        }
+    }
+    &.mobile-version {
+        display: none;
+    }
+}

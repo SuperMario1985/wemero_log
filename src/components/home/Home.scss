@@ -1,0 +1,37 @@
+.home {
+    padding: 64px 0 0 256px;
+    height: 100%;
+    overflow: hidden;
+    .main-content {
+        position: relative;
+        padding: 24px;
+        background: rgba(246, 246, 250, 1);
+        overflow-y: auto;
+    }
+    .logo-box {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+    }
+    .single-submenu {
+        height: 50px;
+        line-height: 50px;
+        padding: 0 45px;
+        min-width: 200px;
+        box-sizing: border-box;
+        cursor: pointer;
+        &:hover {
+            outline: 0;
+            background-color: #ecf5ff;
+        }
+        &.is-active {
+            color: #409eff;
+        }
+    }
+    &.pad-version {
+        padding: 64px 0 0 48px;
+    }
+    &.mobile-version {
+        padding: 0.96rem 0 0 0;
+    }
+}
