@@ -145,7 +145,8 @@ export default {
       logDetail: {
         logItem: null,
         page: 1,
-        page_size: 10
+        page_size: 10,
+        isOnline:true
       },
       logDetailInfo: null,
       logInfo: null,
@@ -221,6 +222,7 @@ export default {
       this.logDetail.page = 1;
       this.logDetailInfo = null;
       this.isLoading = true;
+      this.logDetail.isOnline = this.searchInfo.isOnline;
       httpService.getB2CLogDetail(this.logDetail, function(response) {
         that.isLoading = false;
         if (response.success) {

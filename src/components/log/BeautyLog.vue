@@ -221,36 +221,37 @@ export default {
         sourceList: [
           {
             value: "all",
-            label: "all type"
+            label: "all type",
           },
           {
             value: "laravel",
-            label: "laravel"
+            label: "laravel",
           },
           {
             value: "sql",
-            label: "sql"
+            label: "sql",
           },
           {
             value: "nginx",
-            label: "nginx"
-          }
-        ]
+            label: "nginx",
+          },
+        ],
       },
       logDetail: {
         logItem: null,
         page: 1,
-        page_size: 10
+        page_size: 10,
+        isOnline: true,
       },
       logDetailInfo: null,
       logInfo: null,
       newItemInfo: null,
       editItemInfo: null,
       input1: "",
-      dialogVisible: false
+      dialogVisible: false,
     };
   },
-  created: function() {
+  created: function () {
     let that = this;
     this.deviceName = this.$store.state.deviceName;
     this.getList();
@@ -264,8 +265,8 @@ export default {
       this.$router.push({
         name: "Home",
         params: {
-          catId: this.$route.params.catId
-        }
+          catId: this.$route.params.catId,
+        },
       });
     },
 
@@ -303,15 +304,15 @@ export default {
         newItemInfoSexOptions: [
           {
             value: 1,
-            label: this.$t("Male")
+            label: this.$t("Male"),
           },
           {
             value: 2,
-            label: this.$t("Female")
-          }
+            label: this.$t("Female"),
+          },
         ],
         isFirstNameError: false,
-        isEmailError: false
+        isEmailError: false,
       };
       this.isAddNewItem = true;
     },
@@ -330,18 +331,18 @@ export default {
         return;
       }
       let that = this;
-      httpService.addNewCustomer(this.newItemInfo, function(response) {
+      httpService.addNewCustomer(this.newItemInfo, function (response) {
         if (response.success) {
           that.$message({
             type: "info",
-            message: response.msg
+            message: response.msg,
           });
           that.isAddNewItem = false;
           that.getList();
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -365,14 +366,14 @@ export default {
     getList() {
       let that = this;
       this.isLoading = true;
-      httpService.getLogList(this.searchInfo, function(response) {
+      httpService.getLogList(this.searchInfo, function (response) {
         that.isLoading = false;
         if (response.success) {
           that.logInfo = response.data;
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -383,8 +384,9 @@ export default {
       this.logDetail.logItem = item;
       this.logDetail.page = 1;
       this.logDetailInfo = null;
+      this.logDetail.isOnline = this.searchInfo.isOnline;
       this.isLoading = true;
-      httpService.getLogDetail(this.logDetail, function(response) {
+      httpService.getLogDetail(this.logDetail, function (response) {
         that.isLoading = false;
         if (response.success) {
           that.isEditItem = true;
@@ -392,7 +394,7 @@ export default {
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -428,18 +430,18 @@ export default {
         return;
       }
       let that = this;
-      httpService.editCustomer(this.editItemInfo, function(response) {
+      httpService.editCustomer(this.editItemInfo, function (response) {
         if (response.success) {
           that.$message({
             type: "info",
-            message: response.msg
+            message: response.msg,
           });
           that.isEditItem = false;
           that.getList();
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -453,7 +455,7 @@ export default {
     handleDetailCurrentPageChange(pageNum) {
       let that = this;
       this.isLoading = true;
-      httpService.getLogDetail(this.logDetail, function(response) {
+      httpService.getLogDetail(this.logDetail, function (response) {
         that.isLoading = false;
         if (response.success) {
           that.isEditItem = true;
@@ -461,7 +463,7 @@ export default {
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -498,11 +500,11 @@ export default {
     goDetail(logInfo) {
       this.$router.push({
         name: "CustomersDetail",
-        params: { id: logInfo.customer_id }
+        params: { id: logInfo.customer_id },
       });
-    }
+    },
   },
-  mounted: function() {}
+  mounted: function () {},
 };
 </script>
 
