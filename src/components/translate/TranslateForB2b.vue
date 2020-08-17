@@ -21,8 +21,15 @@
       <el-tabs type="border-card">
         <el-tab-pane label="Query word translation">
           <div class="tanslate-new-words">
-            <el-input v-model="checkInfo.words" placeholder="Please input the query word"></el-input>
-            <el-button @click="checkWords" type="primary">Query</el-button>
+            <el-input
+              type="textarea"
+              placeholder="请以JSON的形式输入要查询的内容"
+              v-model="checkInfo.words"
+              :rows="10"
+              maxlength="5000"
+              show-word-limit
+            ></el-input>
+            <el-button @click="checkWords" type="primary">确认查询</el-button>
             <div class="tanslate-result" v-if="checkResult">
               <table class="table">
                 <colgroup>
@@ -43,12 +50,24 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{{checkResult.en || '--'}}</td>
-                    <td class>{{checkResult.hk || '--'}}</td>
-                    <td>{{checkResult.jp || '--'}}</td>
-                    <td>{{checkResult.ru || '--'}}</td>
+                    <td>
+                      <!-- <el-input type="textarea" v-model="checkResult.en" :rows="10"></el-input> -->
+                      <json-viewer :value="checkResult.en" :expand-depth="1" copyable boxed sort></json-viewer>
+                    </td>
+                    <td>
+                      <!-- <el-input type="textarea" v-model="checkResult.hk" :rows="10"></el-input> -->
+                      <json-viewer :value="checkResult.hk" :expand-depth="1" copyable boxed sort></json-viewer>
+                    </td>
+                    <td>
+                      <!-- <el-input type="textarea" v-model="checkResult.jp" :rows="10"></el-input> -->
+                      <json-viewer :value="checkResult.jp" :expand-depth="1" copyable boxed sort></json-viewer>
+                    </td>
+                    <td>
+                      <!-- <el-input type="textarea" v-model="checkResult.ru" :rows="10"></el-input> -->
+                      <json-viewer :value="checkResult.ru" :expand-depth="1" copyable boxed sort></json-viewer>
+                    </td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <td>
                       <el-button
                         @click="doCopy(checkResult.en)"
@@ -81,7 +100,7 @@
                         round
                       >Copy Words</el-button>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>
@@ -89,8 +108,15 @@
         </el-tab-pane>
         <el-tab-pane label="Collect new words">
           <div class="tanslate-new-words">
-            <el-input v-model="addInfo.words" placeholder="Please input to add words"></el-input>
-            <el-button @click="addWords" type="primary">Add</el-button>
+            <el-input
+              type="textarea"
+              placeholder="请以JSON的形式输入要翻译的内容"
+              v-model="addInfo.words"
+              :rows="10"
+              maxlength="5000"
+              show-word-limit
+            ></el-input>
+            <el-button @click="addWords" type="primary">添加生成</el-button>
           </div>
         </el-tab-pane>
         <el-tab-pane label="Download language pack">
@@ -171,35 +197,35 @@ export default {
       packageOptions: [
         {
           value: "en",
-          label: "english"
+          label: "english",
         },
         {
           value: "hk",
-          label: "chinese"
+          label: "chinese",
         },
         {
           value: "ja",
-          label: "Japanese"
+          label: "Japanese",
         },
         {
           value: "ru",
-          label: "Russian"
-        }
+          label: "Russian",
+        },
       ],
       packageVal: "hk",
       checkInfo: {
         type: "b2b",
-        words: "accepted"
+        words: "",
       },
       addInfo: {
         type: "b2b",
         code: "hk",
-        words: ""
+        words: "",
       },
-      checkResult: null
+      checkResult: null,
     };
   },
-  created: function() {
+  created: function () {
     let that = this;
     this.deviceName = this.$store.state.deviceName;
   },
@@ -224,14 +250,18 @@ export default {
     checkWords() {
       let that = this;
       this.isLoading = true;
-      httpService.getTranslateByWords(this.checkInfo, function(response) {
+      httpService.getTranslateByJSON(this.checkInfo, function (response) {
         that.isLoading = false;
         if (response.success) {
+          // response.data.hk = JSON.stringify(response.data.hk);
+          // response.data.ru = JSON.stringify(response.data.ru);
+          // response.data.jp = JSON.stringify(response.data.jp);
+          // response.data.en = JSON.stringify(response.data.en);
           that.checkResult = response.data;
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -239,14 +269,17 @@ export default {
     addWords() {
       let that = this;
       this.isLoading = true;
-      httpService.addTranslateByWords(this.addInfo, function(response) {
+      let addInfo = JSON.parse(JSON.stringify(this.addInfo));
+      // addInfo.words = JSON.stringify(addInfo.words)
+      debugger;
+      httpService.addTranslateByJSON(addInfo, function (response) {
         that.isLoading = false;
         if (response.success) {
           // that.translateInfo = response.data;
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -255,42 +288,41 @@ export default {
       let that = this;
       let packInfo = {
         type: "b2b",
-        code: this.packageVal
+        code: this.packageVal,
       };
       this.isLoading = true;
-      httpService.downloadLanguagePack(packInfo, function(response) {
+      httpService.downloadLanguagePack(packInfo, function (response) {
         that.isLoading = false;
         if (response.success) {
           var url = response.data;
-          debugger
           window.location.href = url;
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
     },
-    doCopy: function(words) {
+    doCopy: function (words) {
       let that = this;
       this.$copyText(words).then(
-        function(e) {
+        function (e) {
           that.$message({
             type: "info",
-            message: "Copy successful"
+            message: "Copy successful",
           });
         },
-        function(e) {
+        function (e) {
           that.$message({
             type: "warning",
-            message: "Can not copy"
+            message: "Can not copy",
           });
         }
       );
-    }
+    },
   },
-  mounted: function() {}
+  mounted: function () {},
 };
 </script>
 

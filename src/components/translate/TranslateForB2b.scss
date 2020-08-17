@@ -2,16 +2,20 @@
     .tanslate-new-words {
         padding: 20px 0 0 20px;
         min-height: 500px;
-        .el-input {
-            width: 280px;
-        }
         .el-button--primary {
             margin-left: 20px;
         }
         .tanslate-result {
             padding-top: 50px;
+            .el-textarea {
+                width: 100%;
+            }
+        }
+        .el-textarea {
+            width: 500px;
         }
     }
+
     .download-package {
         padding: 20px 0 0 20px;
         min-height: 500px;

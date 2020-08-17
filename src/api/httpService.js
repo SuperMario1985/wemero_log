@@ -13,7 +13,7 @@ let b2bOnlineHost = 'https://api-beauty.wemero.com'
 let b2bUatHost = 'http://api-beauty.alios.idengyun.com';
 let b2cOnlineHost = 'https://api.wemero.com';
 let b2cUatHost = 'http://api.alios.idengyun.com';
-let translateHost = 'http://devfirstb.com';
+let translateHost = 'http://firstadmin.weme.com';
 
 // 设置语言
 function setLang(lang) {
@@ -309,6 +309,36 @@ function getTranslateByWords(translateInfo, successFun, errorFun) {
         }
     });
 }
+// 翻译，查看单词翻译
+function getTranslateByJSON(translateInfo, successFun, errorFun) {
+    let resultInfo = {
+        success: false,
+        data: null,
+        msg: ''
+    }
+    httpServe({
+        method: "post",
+        url: translateHost + "/api/trans/transWordsJson",
+        data: {
+            type: translateInfo.type,
+            code: translateInfo.code,
+            words: translateInfo.words
+        }
+    }).then(function (response) {
+        if (response.status === 200 &&
+            response.data &&
+            response.data.code === 10000) {
+            resultInfo.success = true;
+            resultInfo.data = response.data.data;
+            resultInfo.msg = response.data.message;
+        } else {
+            resultInfo.msg = response.data.message;
+        }
+        if (successFun) {
+            successFun(resultInfo);
+        }
+    });
+}
 // 翻译，添加生词
 function addTranslateByWords(translateInfo, successFun, errorFun) {
     let resultInfo = {
@@ -320,6 +350,36 @@ function addTranslateByWords(translateInfo, successFun, errorFun) {
         method: "get",
         url: translateHost + "/api/trans/newWords",
         params: {
+            type: translateInfo.type,
+            code: translateInfo.code,
+            words: translateInfo.words
+        }
+    }).then(function (response) {
+        if (response.status === 200 &&
+            response.data &&
+            response.data.code === 10000) {
+            resultInfo.success = true;
+            resultInfo.data = response.data.data;
+            resultInfo.msg = response.data.message;
+        } else {
+            resultInfo.msg = response.data.message;
+        }
+        if (successFun) {
+            successFun(resultInfo);
+        }
+    });
+}
+// 翻译，添加生词,以JSON的形式
+function addTranslateByJSON(translateInfo, successFun, errorFun) {
+    let resultInfo = {
+        success: false,
+        data: null,
+        msg: ''
+    }
+    httpServe({
+        method: "POST",
+        url: translateHost + "/api/trans/newWordsJson",
+        data: {
             type: translateInfo.type,
             code: translateInfo.code,
             words: translateInfo.words
@@ -396,6 +456,7 @@ function testEncrypt() {
     });
 }
 
+
 // 字符串trim;
 function trim(str) {
     let reg = /\s/g;
@@ -414,7 +475,9 @@ export default {
     downB2CloadLog,
     translateDetail,
     getTranslateByWords,
+    getTranslateByJSON,
     addTranslateByWords,
+    addTranslateByJSON,
     testEncrypt,
     downloadLanguagePack
 }

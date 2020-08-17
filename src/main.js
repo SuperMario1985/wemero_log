@@ -35,6 +35,10 @@ import VueClipboard from 'vue-clipboard2';
 VueClipboard.config.autoSetContainer = true 
 Vue.use(VueClipboard)
 
+import JsonViewer from 'vue-json-viewer'
+Vue.use(JsonViewer);
+import 'vue-json-viewer/style.css';
+
 
 
 Vue.config.productionTip = false;
