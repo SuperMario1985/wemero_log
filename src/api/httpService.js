@@ -13,7 +13,8 @@ let b2bOnlineHost = 'https://api-beauty.wemero.com'
 let b2bUatHost = 'http://api-beauty.alios.idengyun.com';
 let b2cOnlineHost = 'https://api.wemero.com';
 let b2cUatHost = 'http://api.alios.idengyun.com';
-let translateHost = 'http://firstadmin.weme.com';
+// let translateHost = 'http://firstadmin.weme.com';
+let translateHost = 'http://firstadmin.alios.idengyun.com';
 
 // 设置语言
 function setLang(lang) {

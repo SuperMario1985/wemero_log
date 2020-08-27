@@ -5,7 +5,7 @@
   >
     <div id="router-box">
       <div class="router-name">
-        · Translate For B2c Management
+        · Translate For App Agent Management
         <el-popover
           placement="bottom-center"
           width="188"
@@ -100,7 +100,7 @@
                         round
                       >Copy Words</el-button>
                     </td>
-                  </tr> -->
+                  </tr>-->
                 </tbody>
               </table>
             </div>
@@ -186,7 +186,7 @@
 <script>
 import httpService from "../../api/httpService";
 export default {
-  name: "TranslateForB2c",
+  name: "TranslateForBeautyAppAgent",
   data() {
     return {
       // 设备名称
@@ -214,11 +214,11 @@ export default {
       ],
       packageVal: "hk",
       checkInfo: {
-        type: "b2c",
+        type: "agent_app",
         words: "",
       },
       addInfo: {
-        type: "b2c",
+        type: "agent_app",
         code: "hk",
         words: "",
       },
@@ -268,7 +268,7 @@ export default {
     downloadPackage() {
       let that = this;
       let packInfo = {
-        type: "b2c",
+        type: "agent_app",
         code: this.packageVal,
       };
       this.isLoading = true;

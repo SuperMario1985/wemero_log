@@ -63,7 +63,7 @@ export default {
           // 更新用户信息状态
           that.$store.dispatch("updateUserInfo", response.data);
           that.$message({
-            type: "info",
+            type: "success",
             message: response.msg
           });
           that.$router.push({ name: "Dashboard" });

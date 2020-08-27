@@ -5,7 +5,7 @@
   >
     <div id="router-box">
       <div class="router-name">
-        · Translate For B2b Management
+        · Translate For Fitness B2b Management
         <el-popover
           placement="bottom-center"
           width="188"
@@ -186,7 +186,7 @@
 <script>
 import httpService from "../../api/httpService";
 export default {
-  name: "TranslateForB2b",
+  name: "TranslateForFitnessB2b",
   data() {
     return {
       // 设备名称
@@ -214,11 +214,11 @@ export default {
       ],
       packageVal: "hk",
       checkInfo: {
-        type: "b2b",
+        type: "fitness_pc",
         words: "",
       },
       addInfo: {
-        type: "b2b",
+        type: "fitness_pc",
         code: "hk",
         words: "",
       },
@@ -230,22 +230,6 @@ export default {
     this.deviceName = this.$store.state.deviceName;
   },
   methods: {
-    // 日志，获取列表
-    getTranslateByWords() {
-      let that = this;
-      this.isLoading = true;
-      // httpService.getB2CLogList(this.searchInfo, function(response) {
-      //   that.isLoading = false;
-      //   if (response.success) {
-      //     that.translateInfo = response.data;
-      //   } else {
-      //     that.$message({
-      //       type: "warning",
-      //       message: response.msg
-      //     });
-      //   }
-      // });
-    },
     // 查询翻译词语
     checkWords() {
       let that = this;
@@ -253,10 +237,6 @@ export default {
       httpService.getTranslateByJSON(this.checkInfo, function (response) {
         that.isLoading = false;
         if (response.success) {
-          // response.data.hk = JSON.stringify(response.data.hk);
-          // response.data.ru = JSON.stringify(response.data.ru);
-          // response.data.jp = JSON.stringify(response.data.jp);
-          // response.data.en = JSON.stringify(response.data.en);
           that.checkResult = response.data;
         } else {
           that.$message({
@@ -270,12 +250,13 @@ export default {
       let that = this;
       this.isLoading = true;
       let addInfo = JSON.parse(JSON.stringify(this.addInfo));
-      // addInfo.words = JSON.stringify(addInfo.words)
-      debugger;
       httpService.addTranslateByJSON(addInfo, function (response) {
         that.isLoading = false;
         if (response.success) {
-          // that.translateInfo = response.data;
+          that.$message({
+            type: "success",
+            message: response.msg,
+          });
         } else {
           that.$message({
             type: "warning",
@@ -287,7 +268,7 @@ export default {
     downloadPackage() {
       let that = this;
       let packInfo = {
-        type: "b2b",
+        type: "fitness_pc",
         code: this.packageVal,
       };
       this.isLoading = true;
@@ -309,7 +290,7 @@ export default {
       this.$copyText(words).then(
         function (e) {
           that.$message({
-            type: "info",
+            type: "success",
             message: "Copy successful",
           });
         },

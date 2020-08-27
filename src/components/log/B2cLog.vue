@@ -270,7 +270,7 @@ export default {
       httpService.editCustomer(this.editItemInfo, function(response) {
         if (response.success) {
           that.$message({
-            type: "info",
+            type: "success",
             message: response.msg
           });
           that.isEditItem = false;

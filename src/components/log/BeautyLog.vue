@@ -334,7 +334,7 @@ export default {
       httpService.addNewCustomer(this.newItemInfo, function (response) {
         if (response.success) {
           that.$message({
-            type: "info",
+            type: "success",
             message: response.msg,
           });
           that.isAddNewItem = false;
@@ -433,7 +433,7 @@ export default {
       httpService.editCustomer(this.editItemInfo, function (response) {
         if (response.success) {
           that.$message({
-            type: "info",
+            type: "success",
             message: response.msg,
           });
           that.isEditItem = false;

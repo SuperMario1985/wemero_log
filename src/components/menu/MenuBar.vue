@@ -29,13 +29,21 @@
               </el-menu-item>
               <el-menu-item index="3" @click="goTranslateForB2b">
                 <i class="el-icon-refresh"></i>
-                <span slot="title">translate-b2b</span>
+                <span slot="title">T-beauty-b2b</span>
               </el-menu-item>
               <el-menu-item index="4" @click="goTranslateForB2c">
                 <i class="el-icon-refresh"></i>
-                <span slot="title">translate-b2c</span>
+                <span slot="title">T-b2c</span>
               </el-menu-item>
-              <el-menu-item index="5" @click="goDuty">
+              <el-menu-item index="5" @click="goTranslateForBeautyAppAgent">
+                <i class="el-icon-refresh"></i>
+                <span slot="title">T-beauty-app-agent</span>
+              </el-menu-item>
+              <el-menu-item index="6" @click="goTranslateForFitnessB2b">
+                <i class="el-icon-refresh"></i>
+                <span slot="title">T-fitness-b2b</span>
+              </el-menu-item>
+              <el-menu-item index="7" @click="goDuty">
                 <i class="el-icon-user"></i>
                 <span slot="title">Watch on duty</span>
               </el-menu-item>
@@ -61,10 +69,10 @@ export default {
       // 窗口高度
       winHeight: "",
       // 默认路由
-      routerIndex: "1"
+      routerIndex: "1",
     };
   },
-  created: function() {
+  created: function () {
     // 浏览器窗口高度
     this.winHeight = window.innerHeight;
     this.deviceName = this.$store.state.deviceName;
@@ -73,12 +81,16 @@ export default {
       this.routerActive = "1";
     } else if (router.name === "B2cLog") {
       this.routerActive = "2";
-    } else if (router.name === "TranslateForB2b") {
+    } else if (router.name === "TranslateForBeautyB2b") {
       this.routerActive = "3";
     } else if (router.name === "TranslateForB2c") {
       this.routerActive = "4";
-    } else if (router.name === "WatchDuty") {
+    } else if (router.name === "TranslateForBeautyAppAgent") {
       this.routerActive = "5";
+    } else if (router.name === "TranslateForFitnessB2b") {
+      this.routerActive = "6";
+    } else if (router.name === "WatchDuty") {
+      this.routerActive = "7";
     }
   },
   methods: {
@@ -86,13 +98,13 @@ export default {
       this.$router.push({
         name: "Home",
         params: {
-          catId: this.$route.params.catId
-        }
+          catId: this.$route.params.catId,
+        },
       });
     },
     goSubItem(routeName, scope) {
       this.$router.push({
-        name: routeName
+        name: routeName,
       });
       let refs = this.$refs;
       // debugger;
@@ -111,20 +123,26 @@ export default {
       this.$router.push({ name: "B2cLog" });
     },
     goTranslateForB2b() {
-      this.$router.push({ name: "TranslateForB2b" });
+      this.$router.push({ name: "TranslateForBeautyB2b" });
     },
     goTranslateForB2c() {
       this.$router.push({ name: "TranslateForB2c" });
     },
+    goTranslateForBeautyAppAgent() {
+      this.$router.push({ name: "TranslateForBeautyAppAgent" });
+    },
+    goTranslateForFitnessB2b(){
+      this.$router.push({ name: "TranslateForFitnessB2b" });
+    },
     goDuty() {
       this.$router.push({ name: "WatchDuty" });
-    }
+    },
   },
   computed: {},
-  mounted: function() {},
+  mounted: function () {},
   components: {
-    HeaderPage
-  }
+    HeaderPage,
+  },
 };
 </script>
 

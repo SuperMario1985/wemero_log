@@ -7,8 +7,12 @@ const Home = () => import(/* webpackChunkName: "home-group" */ '../components/ho
 const BeautyLog = () => import(/* webpackChunkName: "log-group" */ '../components/log/BeautyLog')
 const B2cLog = () => import(/* webpackChunkName: "log-group" */ '../components/log/B2cLog')
 
-const TranslateForB2b = () => import(/* webpackChunkName: "translate-group" */ '../components/translate/TranslateForB2b.vue')
+const TranslateForBeautyB2b = () => import(/* webpackChunkName: "translate-group" */ '../components/translate/TranslateForBeautyB2b.vue')
 const TranslateForB2c = () => import(/* webpackChunkName: "translate-group" */ '../components/translate/TranslateForB2c.vue')
+const TranslateForBeautyAppAgent = () => import(/* webpackChunkName: "translate-group" */ '../components/translate/TranslateForBeautyAppAgent.vue')
+const TranslateForFitnessB2b = () => import(/* webpackChunkName: "translate-group" */ '../components/translate/TranslateForFitnessB2b.vue')
+
+
 
 const WatchDuty = () => import(/* webpackChunkName: "translate-group" */ '../components/duty/WatchDuty.vue')
 
@@ -38,14 +42,24 @@ let router = new Router({
           component: B2cLog
         },
         {
-          path: '/translate-b2b',
-          name: 'TranslateForB2b',
-          component: TranslateForB2b
+          path: '/translate-beauty-b2b',
+          name: 'TranslateForBeautyB2b',
+          component: TranslateForBeautyB2b
         },
         {
           path: '/translate-b2c',
           name: 'TranslateForB2c',
           component: TranslateForB2c
+        },
+        {
+          path: '/translate-beauty-app-agent',
+          name: 'TranslateForBeautyAppAgent',
+          component: TranslateForBeautyAppAgent
+        },
+        {
+          path: '/translate-fitness-b2b',
+          name: 'TranslateForFitnessB2b',
+          component: TranslateForFitnessB2b
         },
         {
           path: '/duty',
