@@ -18,6 +18,7 @@
       </div>
     </div>
     <div class="main-content" v-loading="isLoading">
+      <h5>注意：这是APP版本的Beauty_Agent的翻译</h5>
       <el-tabs type="border-card">
         <el-tab-pane label="Query word translation">
           <div class="tanslate-new-words">

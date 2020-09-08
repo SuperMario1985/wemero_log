@@ -18,6 +18,7 @@
       </div>
     </div>
     <div class="main-content" v-loading="isLoading">
+      <h5>注意：这是Fitness_B2B的翻译</h5>
       <el-tabs type="border-card">
         <el-tab-pane label="Query word translation">
           <div class="tanslate-new-words">
@@ -51,56 +52,18 @@
                 <tbody>
                   <tr>
                     <td>
-                      <!-- <el-input type="textarea" v-model="checkResult.en" :rows="10"></el-input> -->
                       <json-viewer :value="checkResult.en" :expand-depth="1" copyable boxed sort></json-viewer>
                     </td>
                     <td>
-                      <!-- <el-input type="textarea" v-model="checkResult.hk" :rows="10"></el-input> -->
                       <json-viewer :value="checkResult.hk" :expand-depth="1" copyable boxed sort></json-viewer>
                     </td>
                     <td>
-                      <!-- <el-input type="textarea" v-model="checkResult.jp" :rows="10"></el-input> -->
                       <json-viewer :value="checkResult.jp" :expand-depth="1" copyable boxed sort></json-viewer>
                     </td>
                     <td>
-                      <!-- <el-input type="textarea" v-model="checkResult.ru" :rows="10"></el-input> -->
                       <json-viewer :value="checkResult.ru" :expand-depth="1" copyable boxed sort></json-viewer>
                     </td>
                   </tr>
-                  <!-- <tr>
-                    <td>
-                      <el-button
-                        @click="doCopy(checkResult.en)"
-                        v-if="checkResult.en"
-                        type="primary"
-                        round
-                      >Copy Words</el-button>
-                    </td>
-                    <td>
-                      <el-button
-                        @click="doCopy(checkResult.hk)"
-                        v-if="checkResult.hk"
-                        type="primary"
-                        round
-                      >Copy Words</el-button>
-                    </td>
-                    <td>
-                      <el-button
-                        @click="doCopy(checkResult.jp)"
-                        v-if="checkResult.jp"
-                        type="primary"
-                        round
-                      >Copy Words</el-button>
-                    </td>
-                    <td>
-                      <el-button
-                        @click="doCopy(checkResult.jp)"
-                        v-if="checkResult.jp"
-                        type="primary"
-                        round
-                      >Copy Words</el-button>
-                    </td>
-                  </tr> -->
                 </tbody>
               </table>
             </div>
