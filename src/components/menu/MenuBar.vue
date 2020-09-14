@@ -31,19 +31,23 @@
                 <i class="el-icon-refresh"></i>
                 <span slot="title">T-beauty-b2b</span>
               </el-menu-item>
-              <el-menu-item index="4" @click="goTranslateForB2c">
+              <el-menu-item index="5" @click="goTranslateForB2bApp">
+                <i class="el-icon-refresh"></i>
+                <span slot="title">T-beauty-app-b2b</span>
+              </el-menu-item>
+              <el-menu-item index="6" @click="goTranslateForB2c">
                 <i class="el-icon-refresh"></i>
                 <span slot="title">T-b2c</span>
               </el-menu-item>
-              <el-menu-item index="5" @click="goTranslateForBeautyAppAgent">
+              <el-menu-item index="7" @click="goTranslateForBeautyAppAgent">
                 <i class="el-icon-refresh"></i>
                 <span slot="title">T-beauty-app-agent</span>
               </el-menu-item>
-              <el-menu-item index="6" @click="goTranslateForFitnessB2b">
+              <el-menu-item index="8" @click="goTranslateForFitnessB2b">
                 <i class="el-icon-refresh"></i>
                 <span slot="title">T-fitness-b2b</span>
               </el-menu-item>
-              <el-menu-item index="7" @click="goDuty">
+              <el-menu-item index="9" @click="goDuty">
                 <i class="el-icon-user"></i>
                 <span slot="title">Watch on duty</span>
               </el-menu-item>
@@ -83,14 +87,16 @@ export default {
       this.routerActive = "2";
     } else if (router.name === "TranslateForBeautyB2b") {
       this.routerActive = "3";
-    } else if (router.name === "TranslateForB2c") {
-      this.routerActive = "4";
-    } else if (router.name === "TranslateForBeautyAppAgent") {
+    } else if (router.name === "TranslateForBeautyApp") {
       this.routerActive = "5";
-    } else if (router.name === "TranslateForFitnessB2b") {
+      } else if (router.name === "TranslateForB2c") {
       this.routerActive = "6";
-    } else if (router.name === "WatchDuty") {
+    } else if (router.name === "TranslateForBeautyAppAgent") {
       this.routerActive = "7";
+    } else if (router.name === "TranslateForFitnessB2b") {
+      this.routerActive = "8";
+    } else if (router.name === "WatchDuty") {
+      this.routerActive = "9";
     }
   },
   methods: {
@@ -124,6 +130,9 @@ export default {
     },
     goTranslateForB2b() {
       this.$router.push({ name: "TranslateForBeautyB2b" });
+    },
+    goTranslateForB2bApp() {
+      this.$router.push({ name: "TranslateForBeautyApp" });
     },
     goTranslateForB2c() {
       this.$router.push({ name: "TranslateForB2c" });
