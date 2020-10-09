@@ -187,12 +187,12 @@ export default {
             },
             {
               date: "2020-10-15",
-              name: "吴登登",
-              address: "测试",
+              name: "邢国华",
+              address: "后端",
             },
             {
               date: "2020-10-16",
-              name: "王小虎",
+              name: "吴登登",
               address: " 测试",
             },
           ],
