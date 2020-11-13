@@ -15,6 +15,7 @@ let b2cOnlineHost = 'https://api.wemero.com';
 let b2cUatHost = 'http://api.alios.idengyun.com';
 // let translateHost = 'http://firstadmin.weme.com';
 let translateHost = 'http://firstadmin.alios.idengyun.com';
+translateHost = 'http://39.105.94.5:8007';
 
 // 设置语言
 function setLang(lang) {
@@ -281,36 +282,6 @@ function translateDetail(translateInfo, successFun, errorFun) {
     });
 }
 // 翻译，查看单词翻译
-function getTranslateByWords(translateInfo, successFun, errorFun) {
-    let resultInfo = {
-        success: false,
-        data: null,
-        msg: ''
-    }
-    httpServe({
-        method: "get",
-        url: translateHost + "/api/trans/transWords",
-        params: {
-            type: translateInfo.type,
-            code: translateInfo.code,
-            words: translateInfo.words
-        }
-    }).then(function (response) {
-        if (response.status === 200 &&
-            response.data &&
-            response.data.code === 10000) {
-            resultInfo.success = true;
-            resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.message;
-        } else {
-            resultInfo.msg = response.data.message;
-        }
-        if (successFun) {
-            successFun(resultInfo);
-        }
-    });
-}
-// 翻译，查看单词翻译
 function getTranslateByJSON(translateInfo, successFun, errorFun) {
     let resultInfo = {
         success: false,
@@ -319,10 +290,11 @@ function getTranslateByJSON(translateInfo, successFun, errorFun) {
     }
     httpServe({
         method: "post",
-        url: translateHost + "/api/trans/transWordsJson",
+        url: translateHost + "/api/translation/getWords",
         data: {
+            cat_id:translateInfo.cat_id,
+            type_group:translateInfo.type_group,
             type: translateInfo.type,
-            code: translateInfo.code,
             words: translateInfo.words
         }
     }).then(function (response) {
@@ -331,39 +303,9 @@ function getTranslateByJSON(translateInfo, successFun, errorFun) {
             response.data.code === 10000) {
             resultInfo.success = true;
             resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.message;
+            resultInfo.msg = response.data.msg;
         } else {
-            resultInfo.msg = response.data.message;
-        }
-        if (successFun) {
-            successFun(resultInfo);
-        }
-    });
-}
-// 翻译，添加生词
-function addTranslateByWords(translateInfo, successFun, errorFun) {
-    let resultInfo = {
-        success: false,
-        data: null,
-        msg: ''
-    }
-    httpServe({
-        method: "get",
-        url: translateHost + "/api/trans/newWords",
-        params: {
-            type: translateInfo.type,
-            code: translateInfo.code,
-            words: translateInfo.words
-        }
-    }).then(function (response) {
-        if (response.status === 200 &&
-            response.data &&
-            response.data.code === 10000) {
-            resultInfo.success = true;
-            resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.message;
-        } else {
-            resultInfo.msg = response.data.message;
+            resultInfo.msg = response.data.msg;
         }
         if (successFun) {
             successFun(resultInfo);
@@ -379,10 +321,11 @@ function addTranslateByJSON(translateInfo, successFun, errorFun) {
     }
     httpServe({
         method: "POST",
-        url: translateHost + "/api/trans/newWordsJson",
+        url: translateHost + "/api/translation/collectWords",
         data: {
+            cat_id:translateInfo.cat_id,
+            type_group:translateInfo.type_group,
             type: translateInfo.type,
-            code: translateInfo.code,
             words: translateInfo.words
         }
     }).then(function (response) {
@@ -391,9 +334,9 @@ function addTranslateByJSON(translateInfo, successFun, errorFun) {
             response.data.code === 10000) {
             resultInfo.success = true;
             resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.message;
+            resultInfo.msg = response.data.msg;
         } else {
-            resultInfo.msg = response.data.message;
+            resultInfo.msg = response.data.msg;
         }
         if (successFun) {
             successFun(resultInfo);
@@ -475,9 +418,7 @@ export default {
     getB2CLogDetail,
     downB2CloadLog,
     translateDetail,
-    getTranslateByWords,
     getTranslateByJSON,
-    addTranslateByWords,
     addTranslateByJSON,
     testEncrypt,
     downloadLanguagePack

@@ -1,7 +1,10 @@
 <template>
   <div
     class="translate-for-b2b"
-    :class="{'mobile-version':deviceName === 'mobile','pad-version':deviceName === 'pad',}"
+    :class="{
+      'mobile-version': deviceName === 'mobile',
+      'pad-version': deviceName === 'pad',
+    }"
   >
     <div id="router-box">
       <div class="router-name">
@@ -10,7 +13,7 @@
           placement="bottom-center"
           width="188"
           :visible-arrow="true"
-          :trigger="deviceName ==='pc' ? 'hover': 'click'"
+          :trigger="deviceName === 'pc' ? 'hover' : 'click'"
         >
           <div class="router-info-text">Management All Translate</div>
           <i slot="reference" class="icon-info"></i>
@@ -34,17 +37,17 @@
             <div class="tanslate-result" v-if="checkResult">
               <table class="table">
                 <colgroup>
-                  <col style="width:25%" />
-                  <col style="width:25%" />
-                  <col style="width:25%" />
-                  <col style="width:25%" />
-                  <col style="width:25%" />
+                  <col style="width: 25%" />
+                  <col style="width: 25%" />
+                  <col style="width: 25%" />
+                  <col style="width: 25%" />
+                  <col style="width: 25%" />
                   <col />
                 </colgroup>
                 <thead>
                   <tr>
                     <th>english</th>
-                    <th>chinese</th>
+                    <!-- <th>chinese</th> -->
                     <th>Japanese</th>
                     <th>Russian</th>
                   </tr>
@@ -52,16 +55,40 @@
                 <tbody>
                   <tr>
                     <td>
-                      <json-viewer :value="checkResult.en" :expand-depth="1" copyable boxed sort></json-viewer>
+                      <json-viewer
+                        :value="checkResult.en"
+                        :expand-depth="1"
+                        copyable
+                        boxed
+                        sort
+                      ></json-viewer>
+                    </td>
+                    <!-- <td>
+                      <json-viewer
+                        :value="checkResult.hk"
+                        :expand-depth="1"
+                        copyable
+                        boxed
+                        sort
+                      ></json-viewer>
+                    </td> -->
+                    <td>
+                      <json-viewer
+                        :value="checkResult.ja"
+                        :expand-depth="1"
+                        copyable
+                        boxed
+                        sort
+                      ></json-viewer>
                     </td>
                     <td>
-                      <json-viewer :value="checkResult.hk" :expand-depth="1" copyable boxed sort></json-viewer>
-                    </td>
-                    <td>
-                      <json-viewer :value="checkResult.jp" :expand-depth="1" copyable boxed sort></json-viewer>
-                    </td>
-                    <td>
-                      <json-viewer :value="checkResult.ru" :expand-depth="1" copyable boxed sort></json-viewer>
+                      <json-viewer
+                        :value="checkResult.ru"
+                        :expand-depth="1"
+                        copyable
+                        boxed
+                        sort
+                      ></json-viewer>
                     </td>
                   </tr>
                 </tbody>
@@ -82,7 +109,7 @@
             <el-button @click="addWords" type="primary">添加生成</el-button>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="Download language pack">
+        <!-- <el-tab-pane label="Download language pack">
           <div class="download-package">
             <el-select
               v-model="packageVal"
@@ -95,17 +122,19 @@
                 :value="item.value"
               ></el-option>
             </el-select>
-            <el-button @click="downloadPackage" type="primary">Download pack</el-button>
+            <el-button @click="downloadPackage" type="primary"
+              >Download pack</el-button
+            >
           </div>
-        </el-tab-pane>
+        </el-tab-pane> -->
       </el-tabs>
       <table class="table" v-if="translateInfo && translateInfo.total > 0">
         <colgroup>
-          <col style="width:23.6%" />
-          <col style="width:19.3%" />
-          <col style="width:16.6%" />
-          <col style="width:17.4%" />
-          <col style="width:12.3%" />
+          <col style="width: 23.6%" />
+          <col style="width: 19.3%" />
+          <col style="width: 16.6%" />
+          <col style="width: 17.4%" />
+          <col style="width: 12.3%" />
           <col />
         </colgroup>
         <thead>
@@ -113,16 +142,16 @@
             <th class="tlf">log name</th>
             <th class="tlf">type</th>
             <th>date</th>
-            <th>{{$t("Actions")}}</th>
+            <th>{{ $t("Actions") }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item,index) in translateInfo.list" :key="index">
+          <tr v-for="(item, index) in translateInfo.list" :key="index">
             <td class="hover">
-              <p class="line-two">{{item.name}}</p>
+              <p class="line-two">{{ item.name }}</p>
             </td>
-            <td class>{{item.type}}</td>
-            <td>{{item.date}}</td>
+            <td class>{{ item.type }}</td>
+            <td>{{ item.date }}</td>
             <td>
               <i v-if="item.referral_source !== 1" class="el-icon-view"></i>
               <i class="el-icon-download"></i>
@@ -132,7 +161,9 @@
       </table>
       <div
         id="pagination"
-        v-if="translateInfo && translateInfo.list && translateInfo.list.length > 0"
+        v-if="
+          translateInfo && translateInfo.list && translateInfo.list.length > 0
+        "
       >
         <el-pagination
           background
@@ -177,12 +208,15 @@ export default {
       ],
       packageVal: "hk",
       checkInfo: {
-        type: "fitness_pc",
+        cat_id: 3,
+        type_group: "B2B",
+        type: "web",
         words: "",
       },
       addInfo: {
-        type: "fitness_pc",
-        code: "hk",
+        cat_id: 3,
+        type_group: "B2B",
+        type: "web",
         words: "",
       },
       checkResult: null,

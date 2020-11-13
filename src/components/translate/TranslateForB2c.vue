@@ -57,7 +57,7 @@
                     </td>
                     <td>
                       <!-- <el-input type="textarea" v-model="checkResult.hk" :rows="10"></el-input> -->
-                      <json-viewer :value="checkResult.hk" :expand-depth="1" copyable boxed sort></json-viewer>
+                      <json-viewer :value="checkResult.zh" :expand-depth="1" copyable boxed sort></json-viewer>
                     </td>
                     <td>
                       <!-- <el-input type="textarea" v-model="checkResult.jp" :rows="10"></el-input> -->
@@ -120,7 +120,7 @@
             <el-button @click="addWords" type="primary">添加生成</el-button>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="Download language pack">
+        <!-- <el-tab-pane label="Download language pack">
           <div class="download-package">
             <el-select
               v-model="packageVal"
@@ -135,7 +135,7 @@
             </el-select>
             <el-button @click="downloadPackage" type="primary">Download pack</el-button>
           </div>
-        </el-tab-pane>
+        </el-tab-pane> -->
       </el-tabs>
       <table class="table" v-if="translateInfo && translateInfo.total > 0">
         <colgroup>
@@ -215,12 +215,15 @@ export default {
       ],
       packageVal: "hk",
       checkInfo: {
-        type: "b2c",
+        cat_id: 1,
+        type_group: "B2C",
+        type: "web",
         words: "",
       },
       addInfo: {
-        type: "b2c",
-        code: "hk",
+        cat_id: 1,
+        type_group: "B2C",
+        type: "web",
         words: "",
       },
       checkResult: null,
