@@ -15,7 +15,7 @@ let b2cOnlineHost = 'https://api.wemero.com';
 let b2cUatHost = 'http://api.alios.idengyun.com';
 // let translateHost = 'http://firstadmin.weme.com';
 let translateHost = 'http://firstadmin.alios.idengyun.com';
-translateHost = 'http://39.105.94.5:8007';
+// translateHost = 'http://39.105.94.5:8007';
 
 // 设置语言
 function setLang(lang) {

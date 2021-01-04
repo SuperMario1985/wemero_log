@@ -33,15 +33,23 @@
               </el-menu-item>
               <el-menu-item index="5" @click="goTranslateForB2bApp">
                 <i class="el-icon-refresh"></i>
-                <span slot="title">T-beauty-app-b2b</span>
+                <span slot="title">T-beauty-b2b-app</span>
               </el-menu-item>
               <el-menu-item index="6" @click="goTranslateForB2c">
                 <i class="el-icon-refresh"></i>
                 <span slot="title">T-b2c</span>
               </el-menu-item>
+              <el-menu-item index="10" @click="goTranslateForB2cApp">
+                <i class="el-icon-refresh"></i>
+                <span slot="title">T-b2c-App</span>
+              </el-menu-item>
+              <el-menu-item index="11" @click="goTranslateForBeautyAgent">
+                <i class="el-icon-refresh"></i>
+                <span slot="title">T-beauty-agent</span>
+              </el-menu-item>
               <el-menu-item index="7" @click="goTranslateForBeautyAppAgent">
                 <i class="el-icon-refresh"></i>
-                <span slot="title">T-beauty-app-agent</span>
+                <span slot="title">T-beauty-agent-app</span>
               </el-menu-item>
               <el-menu-item index="8" @click="goTranslateForFitnessB2b">
                 <i class="el-icon-refresh"></i>
@@ -97,6 +105,10 @@ export default {
       this.routerActive = "8";
     } else if (router.name === "WatchDuty") {
       this.routerActive = "9";
+    } else if (router.name === "TranslateForB2cApp") {
+      this.routerActive = "10";
+    } else if (router.name === "TranslateForBeautyAgent") {
+      this.routerActive = "11";
     }
   },
   methods: {
@@ -136,6 +148,12 @@ export default {
     },
     goTranslateForB2c() {
       this.$router.push({ name: "TranslateForB2c" });
+    },
+    goTranslateForB2cApp() {
+      this.$router.push({ name: "TranslateForB2cApp" });
+    },
+    goTranslateForBeautyAgent() {
+      this.$router.push({ name: "TranslateForBeautyAgent" });
     },
     goTranslateForBeautyAppAgent() {
       this.$router.push({ name: "TranslateForBeautyAppAgent" });
