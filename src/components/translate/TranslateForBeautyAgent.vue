@@ -60,7 +60,7 @@
                       <json-viewer :value="checkResult.zh" :expand-depth="1" copyable boxed sort></json-viewer>
                     </td>
                     <td>
-                      <!-- <el-input type="textarea" v-model="checkResult.jp" :rows="10"></el-input> -->
+                      <!-- <el-input type="textarea" v-model="checkResult.ja" :rows="10"></el-input> -->
                       <json-viewer :value="checkResult.ja" :expand-depth="1" copyable boxed sort></json-viewer>
                     </td>
                     <td>
@@ -68,40 +68,6 @@
                       <json-viewer :value="checkResult.ru" :expand-depth="1" copyable boxed sort></json-viewer>
                     </td>
                   </tr>
-                  <!-- <tr>
-                    <td>
-                      <el-button
-                        @click="doCopy(checkResult.en)"
-                        v-if="checkResult.en"
-                        type="primary"
-                        round
-                      >Copy Words</el-button>
-                    </td>
-                    <td>
-                      <el-button
-                        @click="doCopy(checkResult.hk)"
-                        v-if="checkResult.hk"
-                        type="primary"
-                        round
-                      >Copy Words</el-button>
-                    </td>
-                    <td>
-                      <el-button
-                        @click="doCopy(checkResult.jp)"
-                        v-if="checkResult.jp"
-                        type="primary"
-                        round
-                      >Copy Words</el-button>
-                    </td>
-                    <td>
-                      <el-button
-                        @click="doCopy(checkResult.jp)"
-                        v-if="checkResult.jp"
-                        type="primary"
-                        round
-                      >Copy Words</el-button>
-                    </td>
-                  </tr>-->
                 </tbody>
               </table>
             </div>
