@@ -1,10 +1,13 @@
 <template>
   <div
     class="menu-bar"
-    :class="{'mobile-version':deviceName === 'mobile','pad-version':deviceName === 'pad',}"
+    :class="{
+      'mobile-version': deviceName === 'mobile',
+      'pad-version': deviceName === 'pad',
+    }"
   >
-    <div class="menu-box" :style="{height:winHeight + 'px'}">
-      <div v-if="deviceName ==='pc'" class="logo-box">
+    <div class="menu-box" :style="{ height: winHeight + 'px' }">
+      <div v-if="deviceName === 'pc'" class="logo-box">
         <img src="../../assets/images/menu_list/icon-logo.png" alt />
       </div>
       <ul class="nav-list">
@@ -20,12 +23,24 @@
               active-text-color="#ffd04b"
             >
               <el-menu-item index="1" @click="goBeautyLog">
-                <i class="el-icon-info"></i>
-                <span slot="title">beauty-log</span>
+                <i class="el-icon-document"></i>
+                <span slot="title">log-beauty</span>
+              </el-menu-item>
+              <el-menu-item index="14" @click="goBeautySepareateLog">
+                <i class="el-icon-document"></i>
+                <span slot="title">log-beauty-separete</span>
+              </el-menu-item>
+              <el-menu-item index="12" @click="goFitnessLog">
+                <i class="el-icon-document"></i>
+                <span slot="title">log-fitness</span>
               </el-menu-item>
               <el-menu-item index="2" @click="goB2cLog">
                 <i class="el-icon-document"></i>
-                <span slot="title">b2c-log</span>
+                <span slot="title">log-b2c</span>
+              </el-menu-item>
+              <el-menu-item index="13" @click="goFirstBLog">
+                <i class="el-icon-document"></i>
+                <span slot="title">log-firstb</span>
               </el-menu-item>
               <el-menu-item index="3" @click="goTranslateForB2b">
                 <i class="el-icon-refresh"></i>
@@ -63,14 +78,12 @@
           </el-col>
         </el-row>
       </ul>
-      <p v-if="deviceName ==='pc'" class="rights">2020 © Wemero</p>
+      <p v-if="deviceName === 'pc'" class="rights">{{ year }} © Wemero</p>
     </div>
   </div>
 </template>
 
 <script>
-import httpService from "../../api/httpService";
-import HeaderPage from "@/components/header/HeaderPage";
 export default {
   name: "MenuBar",
   data() {
@@ -82,6 +95,7 @@ export default {
       winHeight: "",
       // 默认路由
       routerIndex: "1",
+      year: "",
     };
   },
   created: function () {
@@ -97,7 +111,7 @@ export default {
       this.routerActive = "3";
     } else if (router.name === "TranslateForBeautyApp") {
       this.routerActive = "5";
-      } else if (router.name === "TranslateForB2c") {
+    } else if (router.name === "TranslateForB2c") {
       this.routerActive = "6";
     } else if (router.name === "TranslateForBeautyAppAgent") {
       this.routerActive = "7";
@@ -109,7 +123,14 @@ export default {
       this.routerActive = "10";
     } else if (router.name === "TranslateForBeautyAgent") {
       this.routerActive = "11";
+    } else if (router.name === "FitnessLog") {
+      this.routerActive = "12";
+    } else if (router.name === "FirstBLog") {
+      this.routerActive = "13";
+    } else if (router.name === "BeautyLogSeparate") {
+      this.routerActive = "14";
     }
+    this.year = new Date().getFullYear();
   },
   methods: {
     goHomePage() {
@@ -137,8 +158,17 @@ export default {
     goBeautyLog() {
       this.$router.push({ name: "BeautyLog" });
     },
+    goBeautySepareateLog() {
+      this.$router.push({ name: "BeautyLogSeparate" });
+    },
+    goFitnessLog() {
+      this.$router.push({ name: "FitnessLog" });
+    },
     goB2cLog() {
       this.$router.push({ name: "B2cLog" });
+    },
+    goFirstBLog() {
+      this.$router.push({ name: "FirstBLog" });
     },
     goTranslateForB2b() {
       this.$router.push({ name: "TranslateForBeautyB2b" });
@@ -158,7 +188,7 @@ export default {
     goTranslateForBeautyAppAgent() {
       this.$router.push({ name: "TranslateForBeautyAppAgent" });
     },
-    goTranslateForFitnessB2b(){
+    goTranslateForFitnessB2b() {
       this.$router.push({ name: "TranslateForFitnessB2b" });
     },
     goDuty() {
@@ -167,9 +197,7 @@ export default {
   },
   computed: {},
   mounted: function () {},
-  components: {
-    HeaderPage,
-  },
+  components: {},
 };
 </script>
 

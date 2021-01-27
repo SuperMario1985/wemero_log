@@ -5,7 +5,10 @@ const Login = () => import(/* webpackChunkName: "login-group" */ '../components/
 const Home = () => import(/* webpackChunkName: "home-group" */ '../components/home/Home')
 
 const BeautyLog = () => import(/* webpackChunkName: "log-group" */ '../components/log/BeautyLog')
+const BeautyLogSeparate = () => import(/* webpackChunkName: "log-group" */ '../components/log/BeautyLogSeparate.vue')
+const FitnessLog = () => import(/* webpackChunkName: "log-group" */ '../components/log/FitnessLog.vue')
 const B2cLog = () => import(/* webpackChunkName: "log-group" */ '../components/log/B2cLog')
+const FirstBLog = () => import(/* webpackChunkName: "log-group" */ '../components/log/FirstBLog.vue')
 
 const TranslateForBeautyB2b = () => import(/* webpackChunkName: "translate-group" */ '../components/translate/TranslateForBeautyB2b.vue')
 const TranslateForBeautyB2bApp = () => import(/* webpackChunkName: "translate-group" */ '../components/translate/TranslateForBeautyApp.vue')
@@ -40,9 +43,24 @@ let router = new Router({
           component: BeautyLog
         },
         {
+          path: '/beauty-separate-log',
+          name: 'BeautyLogSeparate',
+          component: BeautyLogSeparate
+        },
+        {
+          path: '/fitness-log',
+          name: 'FitnessLog',
+          component: FitnessLog
+        },
+        {
           path: '/b2c-log',
           name: 'B2cLog',
           component: B2cLog
+        },
+        {
+          path: '/firstb-log',
+          name: 'FirstBLog',
+          component: FirstBLog
         },
         {
           path: '/translate-beauty-b2b',
