@@ -1,7 +1,10 @@
 <template>
   <div
     class="customer"
-    :class="{'mobile-version':deviceName === 'mobile','pad-version':deviceName === 'pad',}"
+    :class="{
+      'mobile-version': deviceName === 'mobile',
+      'pad-version': deviceName === 'pad',
+    }"
   >
     <div id="router-box">
       <div class="router-name">
@@ -10,20 +13,30 @@
           placement="bottom-center"
           width="188"
           :visible-arrow="true"
-          :trigger="deviceName ==='pc' ? 'hover': 'click'"
+          :trigger="deviceName === 'pc' ? 'hover' : 'click'"
         >
           <div class="router-info-text">Management All Log</div>
           <i slot="reference" class="icon-info"></i>
         </el-popover>
       </div>
       <div class="active-content">
-        <el-switch
+        <el-select
+          class="select-box"
+          v-model="searchInfo.environment"
           @change="handleEnvironmentChange"
-          v-model="searchInfo.isOnline"
-          active-text="生产环境"
-          inactive-text="测试环境"
-        ></el-switch>
-        <el-select class="select-box" v-model="searchInfo.source" @change="switchSource">
+        >
+          <el-option
+            v-for="item in searchInfo.environmentList"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
+        <el-select
+          class="select-box"
+          v-model="searchInfo.source"
+          @change="switchSource"
+        >
           <el-option
             v-for="item in searchInfo.sourceList"
             :key="item.value"
@@ -31,22 +44,16 @@
             :value="item.value"
           ></el-option>
         </el-select>
-        <!-- <el-input
-          @input="handleSearchValueChange"
-          suffix-icon="el-icon-search"
-          v-model="searchInfo.searchValue"
-        ></el-input>
-        <i @click="addItem" class="add-item"></i>-->
       </div>
     </div>
     <div class="main-content" v-loading="isLoading">
       <table class="table" v-if="logInfo && logInfo.total > 0">
         <colgroup>
-          <col style="width:23.6%" />
-          <col style="width:19.3%" />
-          <col style="width:16.6%" />
-          <col style="width:17.4%" />
-          <col style="width:12.3%" />
+          <col style="width: 23.6%" />
+          <col style="width: 19.3%" />
+          <col style="width: 16.6%" />
+          <col style="width: 17.4%" />
+          <col style="width: 12.3%" />
           <col />
         </colgroup>
         <thead>
@@ -54,24 +61,31 @@
             <th class="tlf">log name</th>
             <th class="tlf">type</th>
             <th>date</th>
-            <th>{{$t("Actions")}}</th>
+            <th>{{ $t("Actions") }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item,index) in logInfo.list" :key="index">
+          <tr v-for="(item, index) in logInfo.list" :key="index">
             <td class="hover" @click="showDetail(item)">
-              <p class="line-two">{{item.name}}</p>
+              <p class="line-two">{{ item.name }}</p>
             </td>
-            <td class>{{item.type}}</td>
-            <td>{{item.date}}</td>
+            <td class>{{ item.type }}</td>
+            <td>{{ item.date }}</td>
             <td>
-              <i v-if="item.referral_source !== 1" @click="showDetail(item)" class="el-icon-view"></i>
+              <i
+                v-if="item.referral_source !== 1"
+                @click="showDetail(item)"
+                class="el-icon-view"
+              ></i>
               <i @click="downloadLog(item)" class="el-icon-download"></i>
             </td>
           </tr>
         </tbody>
       </table>
-      <div id="pagination" v-if="logInfo && logInfo.list &&logInfo.list.length > 0">
+      <div
+        id="pagination"
+        v-if="logInfo && logInfo.list && logInfo.list.length > 0"
+      >
         <el-pagination
           background
           layout="prev, pager, next"
@@ -81,98 +95,9 @@
         ></el-pagination>
       </div>
     </div>
-    <!-- 添加新的 -->
-    <el-drawer
-      :size="deviceName === 'mobile'?'100%' :'408px'"
-      :before-close="handleAddItemClose"
-      :visible.sync="isAddNewItem"
-      :append-to-body="false"
-      :close-on-press-escape="false"
-      :wrapperClosable="false"
-      direction="rtl"
-    >
-      <p slot="title" class="drawer-title">{{$t('Add New Customer')}}</p>
-      <div id="add-item" v-if="newItemInfo">
-        <div class="two-input-box">
-          <div class="input-box left-item">
-            <h5>{{$t("First Name")}}*</h5>
-            <el-input
-              v-model="newItemInfo.first_name"
-              placeholder
-              @input="newItemFirstNameChangeHandle"
-              :class="{'error-style':newItemInfo.isFirstNameError}"
-              v-focus
-            ></el-input>
-            <!-- TODO 需要翻译 -->
-            <p
-              class="tips"
-              v-if="newItemInfo.isFirstNameError"
-            >{{$t('The First name field is required')}}</p>
-          </div>
-          <div class="input-box right-item">
-            <h5>{{$t("Last Name")}}</h5>
-            <el-input v-model="newItemInfo.last_name" placeholder></el-input>
-          </div>
-        </div>
-        <div class="one-input-box">
-          <div class="input-box">
-            <h5>{{$t("Email ID")}}*</h5>
-            <el-input
-              v-model="newItemInfo.email"
-              @input="newItemFirstEmailChangeHandle"
-              placeholder
-              :class="{'error-style':newItemInfo.isEmailError}"
-            ></el-input>
-            <!-- TODO 需要翻译 -->
-            <p class="tips" v-if="newItemInfo.isEmailError">{{$t('The Email field is required.')}}</p>
-          </div>
-        </div>
-        <div class="phone-box">
-          <div class="input-box">
-            <h5>{{$t("Phone Number")}}</h5>
-            <vue-tel-input
-              v-model="newItemInfo.phone_number"
-              :enabledCountryCode="true"
-              :placeholder="''"
-              :preferredCountries="['CN','US']"
-              @country-changed="handelNewItemCountryChange"
-            ></vue-tel-input>
-          </div>
-        </div>
-        <div class="one-select-box">
-          <div class="input-box">
-            <h5>{{$t("Gender")}}</h5>
-            <el-select v-model="newItemInfo.gender">
-              <el-option
-                v-for="item in newItemInfo.newItemInfoSexOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </div>
-        </div>
-        <div class="check-box">
-          <div class="input-box">
-            <h5>{{$t("Appointment Reminder")}}</h5>
-            <el-checkbox v-model="newItemInfo.isNotification">{{$t("Email Reminder")}}</el-checkbox>
-          </div>
-        </div>
-        <div class="one-input-box">
-          <div class="input-box">
-            <h5>{{$t("Additional Note")}}</h5>
-            <el-input v-model="newItemInfo.additional_note" placeholder></el-input>
-          </div>
-        </div>
-        <div class="action-box">
-          <el-button @click="cancelAddItem">{{$t("Cancel")}}</el-button>
-          <el-button type="primary" @click="confirmAddItem">{{$t("Add Customer")}}</el-button>
-        </div>
-      </div>
-    </el-drawer>
     <!-- 编辑现有的 -->
     <el-drawer
-      :size="deviceName === 'mobile'?'100%' :'80%'"
+      :size="deviceName === 'mobile' ? '100%' : '80%'"
       :before-close="handleEditItemClose"
       :visible.sync="isEditItem"
       :append-to-body="false"
@@ -183,9 +108,14 @@
       <p slot="title" class="drawer-title">log detail</p>
       <div id="edit-item" v-if="logDetailInfo">
         <ul>
-          <li v-for="(item,index) in logDetailInfo.list" :key="index">{{item}}</li>
+          <li v-for="(item, index) in logDetailInfo.list" :key="index">
+            {{ item }}
+          </li>
         </ul>
-        <div id="pagination" v-if="logDetailInfo.list && logInfo.list.length > 0">
+        <div
+          id="pagination"
+          v-if="logDetailInfo.list && logInfo.list.length > 0"
+        >
           <el-pagination
             background
             layout="prev, pager, next"
@@ -211,7 +141,21 @@ export default {
       isAddNewItem: false,
       isEditItem: false,
       searchInfo: {
-        isOnline: true,
+        environment: "uat",
+        environmentList: [
+          {
+            value: "online",
+            label: "生产环境",
+          },
+          {
+            value: "pre",
+            label: "预发环境",
+          },
+          {
+            value: "uat",
+            label: "测试环境",
+          },
+        ],
         searchValue: "",
         page: 1,
         pageSize: 5,
@@ -241,7 +185,7 @@ export default {
         logItem: null,
         page: 1,
         page_size: 10,
-        isOnline: true,
+        environment: "",
       },
       logDetailInfo: null,
       logInfo: null,
@@ -288,74 +232,6 @@ export default {
     handleEditItemClose() {
       this.isEditItem = false;
     },
-    // 顾客，添加新的
-    addItem() {
-      // gender	int	1 male 2 female
-      this.newItemInfo = {
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone_number: "",
-        gender: 1,
-        additional_note: "",
-        isNotification: true,
-        notification: 1,
-        phone_prefix: "",
-        newItemInfoSexOptions: [
-          {
-            value: 1,
-            label: this.$t("Male"),
-          },
-          {
-            value: 2,
-            label: this.$t("Female"),
-          },
-        ],
-        isFirstNameError: false,
-        isEmailError: false,
-      };
-      this.isAddNewItem = true;
-    },
-    // 顾客，取消添加新的
-    cancelAddItem() {
-      this.isAddNewItem = false;
-    },
-    // 顾客，确认添加新的
-    confirmAddItem() {
-      if (!this.newItemInfo.first_name) {
-        this.newItemInfo.isFirstNameError = true;
-        return;
-      }
-      if (!this.newItemInfo.email) {
-        this.newItemInfo.isEmailError = true;
-        return;
-      }
-      let that = this;
-      httpService.addNewCustomer(this.newItemInfo, function (response) {
-        if (response.success) {
-          that.$message({
-            type: "success",
-            message: response.msg,
-          });
-          that.isAddNewItem = false;
-          that.getList();
-        } else {
-          that.$message({
-            type: "warning",
-            message: response.msg,
-          });
-        }
-      });
-    },
-    // 顾客，添加新的，名字变化
-    newItemFirstNameChangeHandle() {
-      this.newItemInfo.isFirstNameError = false;
-    },
-    // 顾客，添加新的，邮箱变化
-    newItemFirstEmailChangeHandle() {
-      this.newItemInfo.isEmailError = false;
-    },
-
     editItemFirstNameChangeHandle() {
       this.editItemInfo.isFirstNameError = false;
     },
@@ -384,7 +260,7 @@ export default {
       this.logDetail.logItem = item;
       this.logDetail.page = 1;
       this.logDetailInfo = null;
-      this.logDetail.isOnline = this.searchInfo.isOnline;
+      this.logDetail.environment = this.searchInfo.environment;
       this.isLoading = true;
       httpService.getLogDetail(this.logDetail, function (response) {
         that.isLoading = false;
@@ -403,8 +279,10 @@ export default {
     downloadLog(item) {
       let that = this;
       let host;
-      if (this.searchInfo.isOnline) {
+      if (this.searchInfo.environment === "online") {
         host = "https://api-beauty.wemero.com";
+      } else if (this.searchInfo.environment === "pre") {
+        host = "https://y-api-beauty.wemero.com";
       } else {
         host = "http://api-beauty.alios.idengyun.com";
       }
@@ -446,7 +324,6 @@ export default {
         }
       });
     },
-
     // 处理当前页码变动
     handleCurrentPageChange(pageNum) {
       this.getList();
@@ -495,13 +372,6 @@ export default {
     // 注册时更换国家编码的处理函数
     handelNewItemCountryChange(countryCodeInfo) {
       this.newItemInfo.phone_prefix = countryCodeInfo.dialCode;
-    },
-    // 顾客，详情
-    goDetail(logInfo) {
-      this.$router.push({
-        name: "CustomersDetail",
-        params: { id: logInfo.customer_id },
-      });
     },
   },
   mounted: function () {},

@@ -11,21 +11,25 @@ let httpServe = axios.create({
 
 // beauty_b2b log
 let b2bOnlineHost = 'https://api-beauty.wemero.com'
+let b2bPreHost = 'https://y-api-beauty.wemero.com'
 let b2bUatHost = 'http://api-beauty.alios.idengyun.com';
 let b2bSeprateUatHost = 'http://39.105.94.5:8006';
 
 // fitness_b2b log
 let fitnessLogOnlineHost = 'https://api-fitness.wemero.com'
-// let fitnessLogUatHost = 'http://api-fitness.alios.idengyun.com';
-let fitnessLogUatHost = 'http://39.105.94.5:8008';
+let fitnessLogb2bPreHost = 'https://y-api-fitness.wemero.com'
+let fitnessLogUatHost = 'http://api-fitness.alios.idengyun.com';
+// let fitnessLogUatHost = 'http://39.105.94.5:8008';
 
 // first_b log
 let firstBLogOnlineHost = 'https://firstadmin.wemero.com'
+let firstBLogPreHost = 'https://y-firstadmin.wemero.com';
 let firstBLogUatHost = 'http://firstadmin.alios.idengyun.com';
 // let firstBLogUatHost = 'http://39.105.94.5:8007';
 
 // b2c log
 let b2cOnlineHost = 'https://api.wemero.com';
+let b2cPreHost = "https://y-api.wemero.com"
 let b2cUatHost = 'http://api.alios.idengyun.com';
 
 
@@ -61,8 +65,10 @@ function getLogList(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = b2bOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = b2bPreHost;
     } else {
         host = b2bUatHost;
     }
@@ -97,8 +103,10 @@ function getLogDetail(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = b2bOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = b2bPreHost;
     } else {
         host = b2bUatHost;
     }
@@ -126,41 +134,8 @@ function getLogDetail(logInfo, successFun, errorFun) {
         }
     });
 }
-// 日志，beauty,下载
-function downloadLog(logInfo, successFun, errorFun) {
-    let resultInfo = {
-        success: false,
-        data: null,
-        msg: ''
-    }
-    let host;
-    if (logInfo.isOnline) {
-        host = b2bOnlineHost;
-    } else {
-        host = b2bUatHost;
-    }
-    httpServe({
-        method: "get",
-        url: host + "/api/beauty/apiLogs/downLogFile",
-        params: {
-            log_date: logInfo.log_date,
-            log_type: logInfo.log_type
-        }
-    }).then(function (response) {
-        if (response.status === 200 &&
-            response.data &&
-            response.data.code === 10000) {
-            resultInfo.success = true;
-            resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.msg;
-        } else {
-            resultInfo.msg = response.data.msg;
-        }
-        if (successFun) {
-            successFun(resultInfo);
-        }
-    });
-}
+
+
 // 日志，beauty separate,获取列表
 function getBeautySeparateLogList(logInfo, successFun, errorFun) {
     let resultInfo = {
@@ -169,8 +144,10 @@ function getBeautySeparateLogList(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = b2bOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = b2bPreHost;
     } else {
         host = b2bSeprateUatHost;
     }
@@ -205,8 +182,10 @@ function getBeautySeparateLogDetail(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = b2bOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = b2bPreHost;
     } else {
         host = b2bSeprateUatHost;
     }
@@ -234,41 +213,8 @@ function getBeautySeparateLogDetail(logInfo, successFun, errorFun) {
         }
     });
 }
-// 日志，beauty separate,下载
-function downloadBeautySeparateLog(logInfo, successFun, errorFun) {
-    let resultInfo = {
-        success: false,
-        data: null,
-        msg: ''
-    }
-    let host;
-    if (logInfo.isOnline) {
-        host = b2bOnlineHost;
-    } else {
-        host = b2bSeprateUatHost;
-    }
-    httpServe({
-        method: "get",
-        url: host + "/api/beauty/apiLogs/downLogFile",
-        params: {
-            log_date: logInfo.log_date,
-            log_type: logInfo.log_type
-        }
-    }).then(function (response) {
-        if (response.status === 200 &&
-            response.data &&
-            response.data.code === 10000) {
-            resultInfo.success = true;
-            resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.msg;
-        } else {
-            resultInfo.msg = response.data.msg;
-        }
-        if (successFun) {
-            successFun(resultInfo);
-        }
-    });
-}
+
+
 // 日志，fitnese,获取列表
 function getFitnessLogList(logInfo, successFun, errorFun) {
     let resultInfo = {
@@ -277,8 +223,10 @@ function getFitnessLogList(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = fitnessLogOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = fitnessLogb2bPreHost;
     } else {
         host = fitnessLogUatHost;
     }
@@ -313,8 +261,10 @@ function getFitnessLogDetail(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = fitnessLogOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = fitnessLogb2bPreHost;
     } else {
         host = fitnessLogUatHost;
     }
@@ -342,41 +292,8 @@ function getFitnessLogDetail(logInfo, successFun, errorFun) {
         }
     });
 }
-// 日志，fitnese,下载
-function downloadFitnessLog(logInfo, successFun, errorFun) {
-    let resultInfo = {
-        success: false,
-        data: null,
-        msg: ''
-    }
-    let host;
-    if (logInfo.isOnline) {
-        host = fitnessLogOnlineHost;
-    } else {
-        host = fitnessLogUatHost;
-    }
-    httpServe({
-        method: "get",
-        url: host + "/api/fitness/apiLogs/downLogFile",
-        params: {
-            log_date: logInfo.log_date,
-            log_type: logInfo.log_type
-        }
-    }).then(function (response) {
-        if (response.status === 200 &&
-            response.data &&
-            response.data.code === 10000) {
-            resultInfo.success = true;
-            resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.msg;
-        } else {
-            resultInfo.msg = response.data.msg;
-        }
-        if (successFun) {
-            successFun(resultInfo);
-        }
-    });
-}
+
+
 // 日志，firstB,获取列表
 function getFirstBLogList(logInfo, successFun, errorFun) {
     let resultInfo = {
@@ -385,8 +302,10 @@ function getFirstBLogList(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = firstBLogOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = firstBLogPreHost;
     } else {
         host = firstBLogUatHost;
     }
@@ -421,8 +340,10 @@ function getFirstBLogDetail(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = firstBLogOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = firstBLogPreHost;
     } else {
         host = firstBLogUatHost;
     }
@@ -450,41 +371,8 @@ function getFirstBLogDetail(logInfo, successFun, errorFun) {
         }
     });
 }
-// 日志，firstB,下载
-function downloadFirstBLog(logInfo, successFun, errorFun) {
-    let resultInfo = {
-        success: false,
-        data: null,
-        msg: ''
-    }
-    let host;
-    if (logInfo.isOnline) {
-        host = firstBLogOnlineHost;
-    } else {
-        host = firstBLogUatHost;
-    }
-    httpServe({
-        method: "get",
-        url: host + "/api/firstb/apiLogs/downLogFile",
-        params: {
-            log_date: logInfo.log_date,
-            log_type: logInfo.log_type
-        }
-    }).then(function (response) {
-        if (response.status === 200 &&
-            response.data &&
-            response.data.code === 10000) {
-            resultInfo.success = true;
-            resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.msg;
-        } else {
-            resultInfo.msg = response.data.msg;
-        }
-        if (successFun) {
-            successFun(resultInfo);
-        }
-    });
-}
+
+
 // 日志，b2c,获取列表
 function getB2CLogList(logInfo, successFun, errorFun) {
     let resultInfo = {
@@ -493,8 +381,10 @@ function getB2CLogList(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = b2cOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = b2cPreHost;
     } else {
         host = b2cUatHost;
     }
@@ -529,8 +419,10 @@ function getB2CLogDetail(logInfo, successFun, errorFun) {
         msg: ''
     }
     let host;
-    if (logInfo.isOnline) {
+    if (logInfo.environment === 'online') {
         host = b2cOnlineHost;
+    } else if (logInfo.environment === 'pre') {
+        host = b2cPreHost;
     } else {
         host = b2cUatHost;
     }
@@ -558,41 +450,9 @@ function getB2CLogDetail(logInfo, successFun, errorFun) {
         }
     });
 }
-// 日志，b2c,下载
-function downB2CloadLog(logInfo, successFun, errorFun) {
-    let resultInfo = {
-        success: false,
-        data: null,
-        msg: ''
-    }
-    let host;
-    if (logInfo.isOnline) {
-        host = b2cOnlineHost;
-    } else {
-        host = b2cUatHost;
-    }
-    httpServe({
-        method: "get",
-        url: host + "/api/v1/apiLogs/downLogFile",
-        params: {
-            log_date: logInfo.log_date,
-            log_type: logInfo.log_type
-        }
-    }).then(function (response) {
-        if (response.status === 200 &&
-            response.data &&
-            response.data.code === 10000) {
-            resultInfo.success = true;
-            resultInfo.data = response.data.data;
-            resultInfo.msg = response.data.msg;
-        } else {
-            resultInfo.msg = response.data.msg;
-        }
-        if (successFun) {
-            successFun(resultInfo);
-        }
-    });
-}
+
+
+
 // 翻译，语言包详情
 function translateDetail(translateInfo, successFun, errorFun) {
     let resultInfo = {
@@ -754,19 +614,14 @@ export default {
     setToken,
     getLogList,
     getLogDetail,
-    downloadLog,
     getBeautySeparateLogList,
     getBeautySeparateLogDetail,
-    downloadBeautySeparateLog,
     getFitnessLogList,
     getFitnessLogDetail,
-    downloadFitnessLog,
     getFirstBLogList,
     getFirstBLogDetail,
-    downloadFirstBLog,
     getB2CLogList,
     getB2CLogDetail,
-    downB2CloadLog,
     translateDetail,
     getTranslateByJSON,
     addTranslateByJSON,

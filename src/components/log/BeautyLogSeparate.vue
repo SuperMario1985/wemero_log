@@ -20,13 +20,18 @@
         </el-popover>
       </div>
       <div class="active-content">
-        <el-switch
-          disabled
+        <el-select
+          class="select-box"
+          v-model="searchInfo.environment"
           @change="handleEnvironmentChange"
-          v-model="searchInfo.isOnline"
-          active-text="生产环境"
-          inactive-text="测试环境"
-        ></el-switch>
+        >
+          <el-option
+            v-for="item in searchInfo.environmentList"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
         <el-select
           class="select-box"
           v-model="searchInfo.source"
@@ -135,7 +140,21 @@ export default {
       isAddNewItem: false,
       isEditItem: false,
       searchInfo: {
-        isOnline: false,
+        environment: "uat",
+        environmentList: [
+          // {
+          //   value: "online",
+          //   label: "生产环境",
+          // },
+          // {
+          //   value: "pre",
+          //   label: "预发环境",
+          // },
+          {
+            value: "uat",
+            label: "测试环境",
+          },
+        ],
         searchValue: "",
         page: 1,
         pageSize: 5,
@@ -165,7 +184,7 @@ export default {
         logItem: null,
         page: 1,
         page_size: 10,
-        isOnline: true,
+        environment: "",
       },
       logDetailInfo: null,
       logInfo: null,
@@ -196,17 +215,20 @@ export default {
     getList() {
       let that = this;
       this.isLoading = true;
-      httpService.getBeautySeparateLogList(this.searchInfo, function (response) {
-        that.isLoading = false;
-        if (response.success) {
-          that.logInfo = response.data;
-        } else {
-          that.$message({
-            type: "warning",
-            message: response.msg,
-          });
+      httpService.getBeautySeparateLogList(
+        this.searchInfo,
+        function (response) {
+          that.isLoading = false;
+          if (response.success) {
+            that.logInfo = response.data;
+          } else {
+            that.$message({
+              type: "warning",
+              message: response.msg,
+            });
+          }
         }
-      });
+      );
     },
     // 日志，查看详情
     showDetail(item) {
@@ -214,27 +236,32 @@ export default {
       this.logDetail.logItem = item;
       this.logDetail.page = 1;
       this.logDetailInfo = null;
-      this.logDetail.isOnline = this.searchInfo.isOnline;
+      this.logDetail.environment = this.searchInfo.environment;
       this.isLoading = true;
-      httpService.getBeautySeparateLogDetail(this.logDetail, function (response) {
-        that.isLoading = false;
-        if (response.success) {
-          that.isEditItem = true;
-          that.logDetailInfo = response.data;
-        } else {
-          that.$message({
-            type: "warning",
-            message: response.msg,
-          });
+      httpService.getBeautySeparateLogDetail(
+        this.logDetail,
+        function (response) {
+          that.isLoading = false;
+          if (response.success) {
+            that.isEditItem = true;
+            that.logDetailInfo = response.data;
+          } else {
+            that.$message({
+              type: "warning",
+              message: response.msg,
+            });
+          }
         }
-      });
+      );
     },
     // 日志，下载
     downloadLog(item) {
       let that = this;
       let host;
-      if (this.searchInfo.isOnline) {
+      if (this.searchInfo.environment === "online") {
         host = "https://api-beauty.wemero.com";
+      } else if (this.searchInfo.environment === "pre") {
+        host = "https://y-api-beauty.wemero.com";
       } else {
         host = "http://api-beauty.alios.idengyun.com";
       }
@@ -284,7 +311,7 @@ export default {
     handleDetailCurrentPageChange(pageNum) {
       let that = this;
       this.isLoading = true;
-      httpService.getLogDetail(this.logDetail, function (response) {
+      httpService.getBeautySeparateLogDetail(this.logDetail, function (response) {
         that.isLoading = false;
         if (response.success) {
           that.isEditItem = true;

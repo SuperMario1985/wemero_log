@@ -1,7 +1,10 @@
 <template>
   <div
     class="customer"
-    :class="{'mobile-version':deviceName === 'mobile','pad-version':deviceName === 'pad',}"
+    :class="{
+      'mobile-version': deviceName === 'mobile',
+      'pad-version': deviceName === 'pad',
+    }"
   >
     <div id="router-box">
       <div class="router-name">
@@ -10,20 +13,30 @@
           placement="bottom-center"
           width="188"
           :visible-arrow="true"
-          :trigger="deviceName ==='pc' ? 'hover': 'click'"
+          :trigger="deviceName === 'pc' ? 'hover' : 'click'"
         >
           <div class="router-info-text">Management All Log</div>
           <i slot="reference" class="icon-info"></i>
         </el-popover>
       </div>
       <div class="active-content">
-        <el-switch
+        <el-select
+          class="select-box"
+          v-model="searchInfo.environment"
           @change="handleEnvironmentChange"
-          v-model="searchInfo.isOnline"
-          active-text="生产环境"
-          inactive-text="测试环境"
-        ></el-switch>
-        <el-select class="select-box" v-model="searchInfo.source" @change="switchSource">
+        >
+          <el-option
+            v-for="item in searchInfo.environmentList"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
+        <el-select
+          class="select-box"
+          v-model="searchInfo.source"
+          @change="switchSource"
+        >
           <el-option
             v-for="item in searchInfo.sourceList"
             :key="item.value"
@@ -36,11 +49,11 @@
     <div class="main-content" v-loading="isLoading">
       <table class="table" v-if="logInfo && logInfo.total > 0">
         <colgroup>
-          <col style="width:23.6%" />
-          <col style="width:19.3%" />
-          <col style="width:16.6%" />
-          <col style="width:17.4%" />
-          <col style="width:12.3%" />
+          <col style="width: 23.6%" />
+          <col style="width: 19.3%" />
+          <col style="width: 16.6%" />
+          <col style="width: 17.4%" />
+          <col style="width: 12.3%" />
           <col />
         </colgroup>
         <thead>
@@ -48,18 +61,22 @@
             <th class="tlf">log name</th>
             <th class="tlf">type</th>
             <th>date</th>
-            <th>{{$t("Actions")}}</th>
+            <th>{{ $t("Actions") }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item,index) in logInfo.list" :key="index">
+          <tr v-for="(item, index) in logInfo.list" :key="index">
             <td class="hover" @click="showDetail(item)">
-              <p class="line-two">{{item.name}}</p>
+              <p class="line-two">{{ item.name }}</p>
             </td>
-            <td class>{{item.type}}</td>
-            <td>{{item.date}}</td>
+            <td class>{{ item.type }}</td>
+            <td>{{ item.date }}</td>
             <td>
-              <i v-if="item.referral_source !== 1" @click="showDetail(item)" class="el-icon-view"></i>
+              <i
+                v-if="item.referral_source !== 1"
+                @click="showDetail(item)"
+                class="el-icon-view"
+              ></i>
               <i @click="downloadLog(item)" class="el-icon-download"></i>
             </td>
           </tr>
@@ -77,7 +94,7 @@
     </div>
     <!-- 编辑现有的 -->
     <el-drawer
-      :size="deviceName === 'mobile'?'100%' :'80%'"
+      :size="deviceName === 'mobile' ? '100%' : '80%'"
       :before-close="handleEditItemClose"
       :visible.sync="isEditItem"
       :append-to-body="false"
@@ -88,9 +105,14 @@
       <p slot="title" class="drawer-title">log detail</p>
       <div id="edit-item" v-if="logDetailInfo">
         <ul>
-          <li v-for="(item,index) in logDetailInfo.list" :key="index">{{item}}</li>
+          <li v-for="(item, index) in logDetailInfo.list" :key="index">
+            {{ item }}
+          </li>
         </ul>
-        <div id="pagination" v-if="logDetailInfo.list && logInfo.list.length > 0">
+        <div
+          id="pagination"
+          v-if="logDetailInfo.list && logInfo.list.length > 0"
+        >
           <el-pagination
             background
             layout="prev, pager, next"
@@ -116,7 +138,21 @@ export default {
       isAddNewItem: false,
       isEditItem: false,
       searchInfo: {
-        isOnline: true,
+        environment: "uat",
+        environmentList: [
+          {
+            value: "online",
+            label: "生产环境",
+          },
+          {
+            value: "pre",
+            label: "预发环境",
+          },
+          {
+            value: "uat",
+            label: "测试环境",
+          },
+        ],
         searchValue: "",
         page: 1,
         pageSize: 5,
@@ -126,37 +162,37 @@ export default {
         sourceList: [
           {
             value: "all",
-            label: "all type"
+            label: "all type",
           },
           {
             value: "laravel",
-            label: "laravel"
+            label: "laravel",
           },
           {
             value: "sql",
-            label: "sql"
+            label: "sql",
           },
           {
             value: "nginx",
-            label: "nginx"
-          }
-        ]
+            label: "nginx",
+          },
+        ],
       },
       logDetail: {
         logItem: null,
         page: 1,
         page_size: 10,
-        isOnline:true
+        environment: "",
       },
       logDetailInfo: null,
       logInfo: null,
       newItemInfo: null,
       editItemInfo: null,
       input1: "",
-      dialogVisible: false
+      dialogVisible: false,
     };
   },
-  created: function() {
+  created: function () {
     let that = this;
     this.deviceName = this.$store.state.deviceName;
     this.getList();
@@ -170,8 +206,8 @@ export default {
       this.$router.push({
         name: "Home",
         params: {
-          catId: this.$route.params.catId
-        }
+          catId: this.$route.params.catId,
+        },
       });
     },
 
@@ -203,14 +239,14 @@ export default {
     getList() {
       let that = this;
       this.isLoading = true;
-      httpService.getB2CLogList(this.searchInfo, function(response) {
+      httpService.getB2CLogList(this.searchInfo, function (response) {
         that.isLoading = false;
         if (response.success) {
           that.logInfo = response.data;
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -222,8 +258,8 @@ export default {
       this.logDetail.page = 1;
       this.logDetailInfo = null;
       this.isLoading = true;
-      this.logDetail.isOnline = this.searchInfo.isOnline;
-      httpService.getB2CLogDetail(this.logDetail, function(response) {
+      this.logDetail.environment = this.searchInfo.environment;
+      httpService.getB2CLogDetail(this.logDetail, function (response) {
         that.isLoading = false;
         if (response.success) {
           that.isEditItem = true;
@@ -231,7 +267,7 @@ export default {
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -240,8 +276,10 @@ export default {
     downloadLog(item) {
       let that = this;
       let host;
-      if (this.searchInfo.isOnline) {
+      if (this.searchInfo.environment === "online") {
         host = "https://api.wemero.com";
+      } else if (this.searchInfo.environment === "pre") {
+        host = "https://y-api.wemero.com";
       } else {
         host = "http://api.alios.idengyun.com";
       }
@@ -267,18 +305,18 @@ export default {
         return;
       }
       let that = this;
-      httpService.editCustomer(this.editItemInfo, function(response) {
+      httpService.editCustomer(this.editItemInfo, function (response) {
         if (response.success) {
           that.$message({
             type: "success",
-            message: response.msg
+            message: response.msg,
           });
           that.isEditItem = false;
           that.getList();
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -292,7 +330,7 @@ export default {
     handleDetailCurrentPageChange(pageNum) {
       let that = this;
       this.isLoading = true;
-      httpService.getB2CLogDetail(this.logDetail, function(response) {
+      httpService.getB2CLogDetail(this.logDetail, function (response) {
         that.isLoading = false;
         if (response.success) {
           that.isEditItem = true;
@@ -300,7 +338,7 @@ export default {
         } else {
           that.$message({
             type: "warning",
-            message: response.msg
+            message: response.msg,
           });
         }
       });
@@ -337,11 +375,11 @@ export default {
     goDetail(logInfo) {
       this.$router.push({
         name: "CustomersDetail",
-        params: { id: logInfo.customer_id }
+        params: { id: logInfo.customer_id },
       });
-    }
+    },
   },
-  mounted: function() {}
+  mounted: function () {},
 };
 </script>
 

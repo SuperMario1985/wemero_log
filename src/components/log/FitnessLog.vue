@@ -20,13 +20,18 @@
         </el-popover>
       </div>
       <div class="active-content">
-        <el-switch
-          disabled
+        <el-select
+          class="select-box"
+          v-model="searchInfo.environment"
           @change="handleEnvironmentChange"
-          v-model="searchInfo.isOnline"
-          active-text="生产环境"
-          inactive-text="测试环境"
-        ></el-switch>
+        >
+          <el-option
+            v-for="item in searchInfo.environmentList"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
         <el-select
           class="select-box"
           v-model="searchInfo.source"
@@ -134,13 +139,27 @@ export default {
       isLoading: false,
       isEditItem: false,
       searchInfo: {
-        isOnline: false,
+        environment: "uat",
+        environmentList: [
+          // {
+          //   value: "online",
+          //   label: "生产环境",
+          // },
+          {
+            value: "pre",
+            label: "预发环境",
+          },
+          {
+            value: "uat",
+            label: "测试环境",
+          },
+        ],
         searchValue: "",
         page: 1,
         pageSize: 5,
         isSearching: false,
         timer: null,
-        source: "laravel",
+        source: "all",
         sourceList: [
           {
             value: "all",
@@ -164,7 +183,7 @@ export default {
         logItem: null,
         page: 1,
         page_size: 10,
-        isOnline: true,
+        environment: "",
       },
       logDetailInfo: null,
       logInfo: null,
@@ -214,7 +233,7 @@ export default {
       this.logDetail.logItem = item;
       this.logDetail.page = 1;
       this.logDetailInfo = null;
-      this.logDetail.isOnline = this.searchInfo.isOnline;
+      this.logDetail.environment = this.searchInfo.environment;
       this.isLoading = true;
       httpService.getFitnessLogDetail(this.logDetail, function (response) {
         that.isLoading = false;
@@ -233,11 +252,13 @@ export default {
     downloadLog(item) {
       let that = this;
       let host;
-      if (this.searchInfo.isOnline) {
+      if (this.searchInfo.environment === "online") {
         host = "https://api-fitness.wemero.com";
+      } else if (this.searchInfo.environment === "pre") {
+        host = "https://y-api-fitness.wemero.com";
       } else {
-        // host = "http://api-beauty.alios.idengyun.com";
-        host = "http://39.105.94.5:8008";
+        host = "http://api-beauty.alios.idengyun.com";
+        // host = "http://39.105.94.5:8008";
       }
       let url =
         host +
@@ -286,7 +307,7 @@ export default {
     handleDetailCurrentPageChange(pageNum) {
       let that = this;
       this.isLoading = true;
-      httpService.getLogDetail(this.logDetail, function (response) {
+      httpService.getFitnessLogDetail(this.logDetail, function (response) {
         that.isLoading = false;
         if (response.success) {
           that.isEditItem = true;
