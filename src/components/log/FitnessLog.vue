@@ -257,7 +257,7 @@ export default {
       } else if (this.searchInfo.environment === "pre") {
         host = "https://y-api-fitness.wemero.com";
       } else {
-        host = "http://api-beauty.alios.idengyun.com";
+        host = "http://api-fitness.alios.idengyun.com";
         // host = "http://39.105.94.5:8008";
       }
       let url =
